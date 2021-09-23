@@ -137,9 +137,15 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   flex-direction: row !important;
   gap: 20px;
 }
-.bg{
+/* .bg{
   background: linear-gradient(
   180deg, #CEDBE4 14.2%, #F1F6F9 14.21%);
+} */
+.form-header {
+    background:#CEDBE4 ;
+}
+.form-body {
+    background:#F1F6F9 ;
 }
 #form-header-text{
     letter-spacing: -0.01em;
@@ -166,6 +172,9 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   color: #02044A75 !important;
   font-size: 13px !important;
 }
+.text-main {
+   color: #02044A;
+}
 #btn_clr {
   background-color: #02044A;;
   border-radius: 6px;
@@ -175,7 +184,7 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   .astext {
     background:none;
     border:none;
-    margin-top:32px;
+    margin-top:20px;
     cursor: pointer;
     flex-flow: column-reverse;
 }
@@ -190,6 +199,20 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
       margin-right: 2.5rem;
     }
 
-
-
+/* New css */
+ .p-3 {
+    padding: 0!important;
+  }
+  input[type='radio'] {
+    border-width: 5px;
+  }
+  .multiselect__tag-icon:after {
+        color: #ffffff;
+  }
+  .multiselect__option--highlight {
+     background: #02044A;
+  }
+   .multiselect__option--highlight:after {
+     background: #02044A;
+  }
 </style>
