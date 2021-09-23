@@ -3,7 +3,7 @@
     <div class="loader-wrapper"  v-show="this.isLoading">
       <div class="loader">Loading...</div>
     </div>
-    <siteVisitForm :siteData="siteData" :siteVisitParams="siteVisitParams" :submitFn="addSiteData"/>
+    <siteVisitForm v-if="Object.keys(this.siteData).length > 0" :siteData="siteData" :siteVisitParams="siteVisitParams" :submitFn="addSiteVisitData"/>
   </div>
 </template>
 
@@ -57,7 +57,7 @@ export default {
         this.isLoading = false
       })
     },
-    addSiteData(){
+    addSiteVisitData(){
     let apiParams = decodeSiteVisitParams(this.siteVisitParams)
     this.isLoading = true
     this.$axios.post(`mobile_crm/companies/${companyId}/leads`, {lead: apiParams})
@@ -72,7 +72,7 @@ export default {
       .catch(err => {
         this.isLoading = false
         if (err.response.status === 500) {
-          this.$toast.error("Created!", {
+          this.$toast.error("Server Error!", {
             timeout: 5000
           });
         } else {

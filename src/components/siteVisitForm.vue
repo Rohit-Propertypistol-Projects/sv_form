@@ -46,7 +46,7 @@
                 <div id="dashed" class="border-dashed border-2 mt-10 mb-10 border-light-black-500 ..."></div>
 
                 <label class="block text-black-500 text-sm mt-5 mb-5 font-bold" for="grid-first-name">How you come to know about your project ? </label>
-                <multiselect v-model="siteVisitParams.source_ids" :searchable="true"  placeholder="Select Sources" v-if="sourceList.length > 0" label="text" track-by="id" :options="sourceList" :multiple="true" :taggable="true"></multiselect>
+                <multiselect v-model="siteVisitParams.source_ids" :searchable="true"  placeholder="Select Sources" label="text" track-by="id" :options="siteData.sources" :multiple="true" :taggable="true"></multiselect>
 
                  <div id="dashed" class="border-dashed border-2 mt-10 mb-10 border-light-black-500 ..."></div>
 
@@ -97,9 +97,9 @@
               </label>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-5">
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Closing Manager *
+              <!-- <label class="block text-gray-400 text-xs" for="grid-first-name">Closing Manager *
                 <t-select v-model="siteVisitParams.name" required  placeholder="Closing Manager" :options="['Option A', 'Option B', 'Option C']" class="mt-2" />
-              </label>
+              </label> -->
               <button class="astext" type="button" @click="brokerModal = true">+ Add New Broker</button>
             </div>
             <button id="btn_clr" type="submit" class="bg-black text-white font-bold py-2 px-4 mt-10 border rounded">
@@ -212,11 +212,6 @@ export default {
         }
       })
     },
-  },
-  computed: {
-    sourceList() {
-      return  this.siteData.sources;
-    }
   }
 }
 </script>
