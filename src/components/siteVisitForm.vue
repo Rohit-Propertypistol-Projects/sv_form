@@ -5,7 +5,7 @@
          <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
         <p class="font-bold text-lg mb-2 page_margin" id="form-header-text">Walkin / Site Visit Information Form</p>
       </div>
-        <div class="form-body page_margin px-16">
+        <div class="form-body px-16">
           <t-card class="rounded-0 bg-none" style="background: transparent; box-shadow: none;">
             <form @submit.prevent="submitFn()">
                 <div class="bg-white -mt-14 p-5 rounded-lg shadow-sm">

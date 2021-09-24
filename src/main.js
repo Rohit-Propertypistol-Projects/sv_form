@@ -7,6 +7,7 @@ import {token} from '@/assets/scripts/utility.js';
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import VueSignaturePad from 'vue-signature-pad';
+import './registerServiceWorker'
 
 Vue.use(Toast);
 Vue.use(VueTailwind);
