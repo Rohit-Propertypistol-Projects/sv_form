@@ -6,13 +6,15 @@ import axios from 'axios'
 import {token} from '@/assets/scripts/utility.js';
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
+import VueSignaturePad from 'vue-signature-pad';
 
 Vue.use(Toast);
-Vue.use(VueTailwind)
+Vue.use(VueTailwind);
+Vue.use(VueSignaturePad);
 
 let baseUrl="http://localhost:3000/api/";
 if(process.env.NODE_ENV === 'production'){
-  baseUrl = "http://newps-api.dummy-builder.in/client_api/";
+  baseUrl = "http://newps-api.dummy-builder.in/api/";
 }
 axios.defaults.baseURL = baseUrl;
 axios.defaults.headers = {

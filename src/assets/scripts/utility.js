@@ -10,6 +10,7 @@ export function decodeSiteVisitParams(siteParams){
   senddata['designation'] = siteParams.designation
   senddata['marital_status'] = siteParams.marital_status
   senddata['address'] = siteParams.address
+  senddata['signature'] = siteParams.signature
   senddata['budget'] = siteParams.budget
   senddata['is_loan_require'] = siteParams.is_loan_require
   senddata['purpose_of_buying'] = siteParams.purpose_of_buying
