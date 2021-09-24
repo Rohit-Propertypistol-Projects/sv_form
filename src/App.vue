@@ -187,16 +187,17 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
     margin-top:20px;
     cursor: pointer;
     flex-flow: column-reverse;
+    margin-top: 32px;
 }
   @media all and (min-width:200px) and (max-width: 1024px) {
     .page_margin {
-      margin-left: 0rem !important;
-      margin-right: 0rem !important;
+      padding-left: 0.8rem !important;
+      padding-right: 0.8rem !important;
     }
   }
     .page_margin {
-      margin-left: 2.5rem;
-      margin-right: 2.5rem;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
     }
 
 /* New css */
@@ -215,4 +216,16 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
    .multiselect__option--highlight:after {
      background: #02044A;
   }
+  #signature {
+  background: #FFFFFF;
+  border: 1px dashed #DFDFE8;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+.buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 8px;
+}
 </style>

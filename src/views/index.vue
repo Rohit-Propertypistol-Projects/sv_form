@@ -3,7 +3,7 @@
     <div class="loader-wrapper"  v-show="this.isLoading">
       <div class="loader">Loading...</div>
     </div>
-    <siteVisitForm v-if="Object.keys(this.siteData).length > 0" :siteData="siteData" :siteVisitParams="siteVisitParams" :submitFn="addSiteVisitData"/>
+    <siteVisitForm v-if="Object.keys(this.siteData).length > 0" ref="svForm" :siteData="siteData" :siteVisitParams="siteVisitParams" :submitFn="addSiteVisitData"/>
   </div>
 </template>
 
@@ -31,6 +31,7 @@ export default {
         marital_status: null,
         address: null,
         budget: null,
+        signature: null,
         is_loan_require: null,
         purpose_of_buying: null,
         customer_reference_name: null,
@@ -39,6 +40,7 @@ export default {
         resident_config: null,
         project_ids: null,
         broker_id: null,
+        closing_executive: null,
         building_status: null,
         budget: null,
       }
@@ -58,33 +60,38 @@ export default {
       })
     },
     addSiteVisitData(){
-    let apiParams = decodeSiteVisitParams(this.siteVisitParams)
-    this.isLoading = true
-    this.$axios.post(`mobile_crm/companies/${companyId}/leads`, {lead: apiParams})
-      .then(res => {
-        this.$toast.success("Created!", {
-          timeout: 5000
-        });
-        this.isLoading = false
-        this.fetchSite()
-        this.siteVisitParams = {}
-      })
-      .catch(err => {
-        this.isLoading = false
-        if (err.response.status === 500) {
-          this.$toast.error("Server Error!", {
+      let { isEmpty, data } = this.$refs.svForm.$refs.signaturePad.saveSignature()
+      if (!isEmpty) {
+        this.siteVisitParams.signature = data
+      }
+      let apiParams = decodeSiteVisitParams(this.siteVisitParams)
+      this.isLoading = true
+      this.$axios.post(`mobile_crm/companies/${companyId}/leads`, {lead: apiParams})
+        .then(res => {
+          this.$toast.success("Success!", {
             timeout: 5000
           });
-        } else {
           this.isLoading = false
-          this.$toast.info(err.response.data.message, {
-            timeout: 5000
-          });
-        }
-      })
-    },
+          this.fetchSite()
+          this.siteVisitParams = {}
+          this.$refs.svForm.$refs.signaturePad.clearSignature()
+        })
+        .catch(err => {
+          this.isLoading = false
+          if (err.response.status === 500) {
+            this.$toast.error("Server Error!", {
+              timeout: 5000
+            });
+          } else {
+            this.isLoading = false
+            this.$toast.info(err.response.data.message, {
+              timeout: 5000
+            });
+          }
+        })
+      },
+    }
   }
-}
 </script>
 <style>
 
