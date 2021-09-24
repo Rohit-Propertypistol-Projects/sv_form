@@ -114,9 +114,9 @@
               </label>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-5">
-              <!-- <label class="block text-gray-400 text-xs" for="grid-first-name">Closing Manager *
-                <t-select v-model="siteVisitParams.name" required  placeholder="Closing Manager" :options="['Option A', 'Option B', 'Option C']" class="mt-2" />
-              </label> -->
+              <label class="block text-gray-400 text-xs" for="grid-first-name">Closing Manager *
+                <t-select v-model="siteVisitParams.closing_executive" required  placeholder="Select Closing Manager" :options="siteData.closing_users" class="mt-2" />
+              </label>
               <button class="astext" type="button" @click="brokerModal = true">+ Add New Broker</button>
             </div>
             <button id="btn_clr" type="submit" class="bg-black text-white  py-2 px-8 mt-10 border rounded text-base font-medium">
@@ -176,7 +176,7 @@ import {companyId} from '@/assets/scripts/utility.js';
 import Multiselect from 'vue-multiselect'
 export default {
   components: {
-    Multiselect,
+    Multiselect
   },
   props: {
     siteVisitParams: {

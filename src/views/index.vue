@@ -40,6 +40,7 @@ export default {
         resident_config: null,
         project_ids: null,
         broker_id: null,
+        closing_executive: null,
         building_status: null,
         budget: null,
       }

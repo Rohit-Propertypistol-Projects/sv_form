@@ -14,7 +14,7 @@ Vue.use(VueSignaturePad);
 
 let baseUrl="http://localhost:3000/api/";
 if(process.env.NODE_ENV === 'production'){
-  baseUrl = "http://newps-api.dummy-builder.in/api/";
+  baseUrl = "http://mayfair-glitz.apps.enrichr.co/api/";
 }
 axios.defaults.baseURL = baseUrl;
 axios.defaults.headers = {

@@ -17,6 +17,7 @@ export function decodeSiteVisitParams(siteParams){
   senddata['customer_reference_name'] = siteParams.customer_reference_name
   senddata['customer_reference_number'] = siteParams.customer_reference_number
   senddata['project_ids'] = [siteParams.project_ids]
+  senddata['closing_executive'] = siteParams.closing_executive
   if ( siteParams.source_ids) {
     senddata['source_ids'] = siteParams.source_ids.map(i => i.id.toString())
   }
@@ -26,5 +27,5 @@ export function decodeSiteVisitParams(siteParams){
   return senddata;
 }
 
-export const token = process.env.NODE_ENV === 'production' ? 'd67eebab-57f2-44e4-b288-14583c11d0e0' : 'f9de35b4710c5e28'
-export const companyId = process.env.NODE_ENV === 'production' ? 'd67eebab-57f2-44e4-b288-14583c11d0e0' : 'f7134b01-f362-4efd-8843-62a9ac217bec'
+export const token = process.env.NODE_ENV === 'production' ? 'da341249439a9e72' : 'b807d5eb37392ffe'
+export const companyId = process.env.NODE_ENV === 'production' ? 'fd8bbb16-e399-4e8f-a1fa-8a9eb337123a' : '3aca59b7-0f5e-4011-8751-b9d40dcc5afa'
