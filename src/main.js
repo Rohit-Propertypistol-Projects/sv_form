@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './assets/tailwind.css'
+import '@/assets/tailwind.css'
 import VueTailwind from 'vue-tailwind/dist/full'
 import axios from 'axios'
 import {token} from '@/assets/scripts/utility.js';
