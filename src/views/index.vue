@@ -68,7 +68,7 @@ export default {
       this.isLoading = true
       this.$axios.post(`mobile_crm/companies/${companyId}/leads`, {lead: apiParams})
         .then(res => {
-          this.$toast.success("Created!", {
+          this.$toast.success("Success!", {
             timeout: 5000
           });
           this.isLoading = false

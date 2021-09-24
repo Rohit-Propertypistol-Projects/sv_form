@@ -12,7 +12,7 @@ Vue.use(Toast);
 Vue.use(VueTailwind);
 Vue.use(VueSignaturePad);
 
-let baseUrl="http://localhost:3000/api/";
+let baseUrl="http://mayfair-glitz.apps.enrichr.co/api/";
 if(process.env.NODE_ENV === 'production'){
   baseUrl = "http://mayfair-glitz.apps.enrichr.co/api/";
 }

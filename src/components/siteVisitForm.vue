@@ -217,7 +217,7 @@ export default {
       this.$parent.isLoading = true
       this.$axios.post(`mobile_crm/companies/${companyId}/brokers`, {broker: this.brokerParams})
       .then(res => {
-        this.$toast.success('Created!', {
+        this.$toast.success('Success!', {
           timeout: 5000
         });
         this.$parent.fetchSite();
