@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './assets/tailwind.css'
+import '@/assets/tailwind.css'
 import VueTailwind from 'vue-tailwind/dist/full'
 import axios from 'axios'
 import {token} from '@/assets/scripts/utility.js';
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import VueSignaturePad from 'vue-signature-pad';
+import './registerServiceWorker'
 
 Vue.use(Toast);
 Vue.use(VueTailwind);
