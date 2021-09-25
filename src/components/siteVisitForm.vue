@@ -1,9 +1,9 @@
 <template>
   <div>
     <t-card class="bg">
-      <div class="form-header px-8 pt-10 pb-16">
+      <div class="form-header px-16 pt-10 pb-16">
          <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
-        <p class="font-bold text-lg mb-2 page_margin" id="form-header-text">Walkin / Site Visit Information Form</p>
+        <p class="font-bold text-lg mb-2" id="form-header-text">Walkin / Site Visit Information Form</p>
       </div>
         <div class="form-body px-16">
           <t-card class="rounded-0 bg-none" style="background: transparent; box-shadow: none;">
