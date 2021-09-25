@@ -1,7 +1,7 @@
 <template>
   <div>
     <t-card class="bg">
-      <div class="form-header px-16 pt-10 pb-16">
+      <div class="form-header page_margin px-16 pt-10 pb-16">
          <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
         <p class="font-bold text-lg mb-2" id="form-header-text">Walkin / Site Visit Information Form</p>
       </div>
@@ -77,7 +77,7 @@
                   </label>
                 <label class="block text-gray-400 text-xs" for="grid-first-name">Home loan preferred from any particular bank
                   <t-select v-model="siteVisitParams.bank_name" class="mt-2" placeholder="Select Bank Name" 
-                  :options="['ICICI', 'SBI', 'HDFC', 'DHFL', 'IDBI', 'AXIS', 'L&T', 'BOB', 'PNB', 'KOTAK', 'INDIABULLS']" />
+                  :options="['ICICI', 'SBI', 'HDFC', 'DHFL', 'INDIABULLS', 'BOB', 'PNB', 'IDBI', 'AXIS', 'KOTAK', 'L&T', 'Others']" />
                 </label>
                 </div>
 
