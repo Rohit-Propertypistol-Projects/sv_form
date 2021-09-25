@@ -13,6 +13,8 @@ export function decodeSiteVisitParams(siteParams){
   senddata['signature'] = siteParams.signature
   senddata['budget'] = siteParams.budget
   senddata['housing_loan_bridge_loan_lap_requirement'] = siteParams.is_loan_require
+  senddata['loan_amount'] = siteParams.loan_amount
+  senddata['bank_name'] = siteParams.bank_name
   senddata['purpose_of_buying_the_flat'] = siteParams.purpose_of_buying
   senddata['customer_reference_name'] = siteParams.customer_reference_name
   senddata['customer_reference_mobileno'] = siteParams.customer_reference_number
