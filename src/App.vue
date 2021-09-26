@@ -189,7 +189,7 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
     flex-flow: column-reverse;
     margin-top: 32px;
 }
-  @media all and (min-width:200px) and (max-width: 1024px) {
+  @media all and (min-width:200px) and (max-width: 600px) {
     .page_margin {
       padding-left: 0.8rem !important;
       padding-right: 0.8rem !important;

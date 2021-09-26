@@ -1,11 +1,11 @@
 <template>
   <div>
     <t-card class="bg">
-      <div class="form-header px-8 pt-10 pb-16">
+      <div class="form-header page_margin px-16 pt-10 pb-16">
          <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
-        <p class="font-bold text-lg mb-2 page_margin" id="form-header-text">Walkin / Site Visit Information Form</p>
+        <p class="font-bold text-lg mb-2" id="form-header-text">Walkin / Site Visit Information Form</p>
       </div>
-        <div class="form-body px-16">
+        <div class="form-body page_margin px-16">
           <t-card class="rounded-0 bg-none" style="background: transparent; box-shadow: none;">
             <form @submit.prevent="submitFn()">
                 <div class="bg-white -mt-14 p-5 rounded-lg shadow-sm">
@@ -57,7 +57,7 @@
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 border-b-2 border-grey-400 border-dashed pb-10 mb-5">
                    <div>
                       <label class="block text-gray-400 text-xs  mt-5 mb-2" for="grid-first-name">Residential</label>
-                      <t-select v-model="siteVisitParams.resident_config" placeholder="Select Residential" :options="['1BHK', '2BHK', '3BHK', 'SHOPS']" />
+                      <t-select v-model="siteVisitParams.resident_config" placeholder="Select Residential" :options="['1BHK', '2BHK', '3BHK', 'SHOP']" />
                    </div>
                    <div>
                      <label class="block text-gray-400 text-xs  mt-5 mb-2" for="grid-first-name">Status</label>
@@ -69,7 +69,18 @@
                    </div>
                   </div>
                 <label class="block text-main text-sm  font-bold mt-5 " for="grid-first-name">Housing Loan / Bridge Loan / LAP Requirement</label>
-                <t-radio-group v-model="siteVisitParams.is_loan_require" class="mt-2" :options="[{ value: 'No', text: 'No' }, { value: 'Yes', text: 'Yes' }]" name="loan" />
+                <t-radio-group v-model="siteVisitParams.is_loan_require"  @change="checkIsLoanRequire(siteVisitParams.is_loan_require)" class="mt-2" :options="[{ value: 'No', text: 'No' }, { value: 'Yes', text: 'Yes' }]" name="loan" />
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5" v-if="siteVisitParams.is_loan_require == 'Yes'">
+                  <label class="block text-gray-400 text-xs " for="grid-first-name">Loan amount (in lacs)
+                    <t-input v-model="siteVisitParams.loan_amount" type="number" required class="mt-2"  name="my-input" />
+                  </label>
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Home loan preferred from any particular bank
+                  <t-select v-model="siteVisitParams.bank_name" class="mt-2" placeholder="Select Bank Name" 
+                  :options="['ICICI', 'SBI', 'HDFC', 'DHFL', 'INDIABULLS', 'BOB', 'PNB', 'IDBI', 'AXIS', 'KOTAK', 'L&T', 'Others']" />
+                </label>
+                </div>
+
                 <label class="block text-gray-400 text-xs mt-5 mb-2" for="grid-first-name">Purpose of buying</label>
                 <t-select v-model="siteVisitParams.purpose_of_buying" placeholder="Select Purpose of buying" :options="['Self Use', 'Investment']" />
 
@@ -212,6 +223,12 @@ export default {
     clearSignature() {
       this.$refs.signaturePad.clearSignature();
       this.siteVisitParams.signature = null
+    },
+    checkIsLoanRequire(loan_require) {
+       if (loan_require == 'No') {
+         this.siteVisitParams.loan_amount = null
+         this.siteVisitParams.bank_name = null
+       }
     },
     addBroker() {
       this.$parent.isLoading = true

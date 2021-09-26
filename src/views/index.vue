@@ -33,6 +33,8 @@ export default {
         budget: null,
         signature: null,
         is_loan_require: null,
+        loan_amount: null,
+        bank_name: null,
         purpose_of_buying: null,
         customer_reference_name: null,
         customer_reference_number: null,
