@@ -57,7 +57,7 @@
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 border-b-2 border-grey-400 border-dashed pb-10 mb-5">
                    <div>
                       <label class="block text-gray-400 text-xs  mt-5 mb-2" for="grid-first-name">Residential</label>
-                      <t-select v-model="siteVisitParams.resident_config" placeholder="Select Residential" :options="['1BHK', '2BHK', '3BHK', 'SHOP']" />
+                      <t-select v-model="siteVisitParams.resident_config" placeholder="Select Residential" :options="['1BHK', '2BHK', '3BHK', 'Shop']" />
                    </div>
                    <div>
                      <label class="block text-gray-400 text-xs  mt-5 mb-2" for="grid-first-name">Status</label>
@@ -120,8 +120,8 @@
               <label class="block text-gray-400 text-xs" for="grid-first-name">Project *
                 <t-select v-model="siteVisitParams.project_ids" required  placeholder="Select Project" :options="siteData.projects" class="mt-2" />
               </label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Broker *
-                <t-select v-model="siteVisitParams.broker_id" required  placeholder="Select Broker" :options="siteData.brokers" class="mt-2" />
+              <label class="block text-gray-400 text-xs" for="grid-first-name">Broker
+                <t-select v-model="siteVisitParams.broker_id"  placeholder="Select Broker" :options="siteData.brokers" class="mt-2" />
               </label>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-5">
