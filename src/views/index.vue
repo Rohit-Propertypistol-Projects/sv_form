@@ -65,6 +65,8 @@ export default {
       let { isEmpty, data } = this.$refs.svForm.$refs.signaturePad.saveSignature()
       if (!isEmpty) {
         this.siteVisitParams.signature = data
+      } else {
+        this.siteVisitParams.signature = null
       }
       let apiParams = decodeSiteVisitParams(this.siteVisitParams)
       this.isLoading = true
