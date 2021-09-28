@@ -1,6 +1,23 @@
 <template>
   <div>
-    <t-card class="bg">
+    <t-card class="bg" v-if="!showPage">
+      <form @submit.prevent="showPage = true">
+        <div class="form-header-logo page_margin px-16 pt-40 pb-16">
+          <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
+            <div class="mx-auto mb-8 w-72">
+              <label class="block text-gray-400 text-xs" for="grid-first-name">Project *
+                <t-select v-model="siteVisitParams.project_ids" required  placeholder="Select Project" :options="siteData.projects" class="mt-2" />
+              </label>
+            </div>
+              <div class="flex mt-8 justify-center">
+              <t-button id="btn_clr" type="submit" class="px-8 text-base font-medium">
+                Continue
+              </t-button>
+            </div>
+        </div>
+      </form>
+    </t-card>
+    <t-card class="bg" v-if="showPage">
       <div class="form-header page_margin px-16 pt-10 pb-16">
          <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
         <p class="font-bold text-lg mb-2" id="form-header-text">Walkin / Site Visit Information Form</p>
@@ -52,19 +69,25 @@
               <div class=" mt-5 border-b-2 border-grey-400 border-dashed pb-10">
                 <label class="block text-main text-sm mt-5 mb-5 font-bold" for="grid-first-name">How you come to know about your project ? </label>
                 <multiselect v-model="siteVisitParams.source_ids" :searchable="true"  placeholder="Select Sources" label="text" track-by="id" :options="siteData.sources" :multiple="true" :taggable="true"></multiselect>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-5">
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Broker
+                  <t-select v-model="siteVisitParams.broker_id"  :required="checkChannelPartner" placeholder="Select Broker" :options="siteData.brokers" class="mt-2" />
+                </label>
+                <button class="astext" type="button" @click="brokerModal = true">+ Add New Broker</button>
+              </div>
               </div>
                 <label class="block text-main text-sm font-bold mt-5" for="grid-first-name">Requirements </label>
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 border-b-2 border-grey-400 border-dashed pb-10 mb-5">
                    <div>
-                      <label class="block text-gray-400 text-xs  mt-5 mb-2" for="grid-first-name">Residential</label>
+                      <label class="block text-gray-400 text-xs mb-2" for="grid-first-name">Residential</label>
                       <t-select v-model="siteVisitParams.resident_config" placeholder="Select Residential" :options="['1BHK', '2BHK', '3BHK', 'Shop']" />
                    </div>
                    <div>
-                     <label class="block text-gray-400 text-xs  mt-5 mb-2" for="grid-first-name">Status</label>
+                     <label class="block text-gray-400 text-xs mb-2" for="grid-first-name">Status</label>
                 <t-select v-model="siteVisitParams.building_status" placeholder="Select Status" :options="['Under Construction', 'Nearing Completion', 'Ready Possession']" />
                    </div>
                        <div>
-                  <label class="block text-gray-400 text-xs mt-5" for="grid-first-name">Budget</label>
+                  <label class="block text-gray-400 text-xs" for="grid-first-name">Budget</label>
                 <t-input v-model="siteVisitParams.budget"  class="mt-2" type="number" name="my-input" />
                    </div>
                   </div>
@@ -116,19 +139,10 @@
               <label class="block tracking-wide text-red-500 text-md font-bold mb-2 mt-5" id="header-text-colored" for="grid-first-name">
                 For Office Use Only
               </label>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Project *
-                <t-select v-model="siteVisitParams.project_ids" required  placeholder="Select Project" :options="siteData.projects" class="mt-2" />
-              </label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Broker
-                <t-select v-model="siteVisitParams.broker_id"  placeholder="Select Broker" :options="siteData.brokers" class="mt-2" />
-              </label>
-            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-5">
               <label class="block text-gray-400 text-xs" for="grid-first-name">Closing Manager *
                 <t-select v-model="siteVisitParams.closing_executive" required  placeholder="Select Closing Manager" :options="siteData.closing_users" class="mt-2" />
               </label>
-              <button class="astext" type="button" @click="brokerModal = true">+ Add New Broker</button>
             </div>
             <button id="btn_clr" type="submit" class="bg-black text-white  py-2 px-8 mt-10 border rounded text-base font-medium">
               Submit
@@ -208,6 +222,7 @@ export default {
       options: {
         penColor: "black",
       },
+      showPage: false,
       brokerModal: false,
       brokerParams: {
         name: null,
@@ -256,6 +271,13 @@ export default {
         }
       })
     },
+  },
+  computed: {
+    checkChannelPartner() {
+      if (this.siteVisitParams.source_ids) {
+        return this.siteVisitParams.source_ids.map(s => s.id).some(s => this.siteData.cp_sources_ids.includes(s));
+      }
+    }
   }
 }
 </script>

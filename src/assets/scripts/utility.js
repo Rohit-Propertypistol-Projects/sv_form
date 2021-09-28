@@ -1,4 +1,5 @@
 
+
 export function decodeSiteVisitParams(siteParams){
   let senddata = {}
   senddata['name'] = siteParams.name

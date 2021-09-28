@@ -144,6 +144,10 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
 .form-header {
     background:#CEDBE4 ;
 }
+.form-header-logo {
+  background:#CEDBE4 ;
+  height: 100vh;
+}
 .form-body {
     background:#F1F6F9 ;
 }

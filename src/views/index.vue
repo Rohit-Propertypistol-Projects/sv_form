@@ -72,12 +72,13 @@ export default {
       this.isLoading = true
       this.$axios.post(`mobile_crm/companies/${companyId}/leads`, {lead: apiParams})
         .then(res => {
-          this.$toast.success("Success!", {
+          this.$toast.success("Thank You for filling the Site Visit Form!", {
             timeout: 5000
           });
           this.isLoading = false
           this.fetchSite()
           this.siteVisitParams = {}
+          this.$refs.svForm.showPage = false
           this.$refs.svForm.$refs.signaturePad.clearSignature()
         })
         .catch(err => {
