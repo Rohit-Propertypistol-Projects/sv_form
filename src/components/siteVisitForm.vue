@@ -2,7 +2,8 @@
   <div>
     <t-card class="bg" v-if="!showPage">
       <form @submit.prevent="showPage = true">
-        <div class="form-header-logo page_margin px-16 pt-40 pb-16">
+        <div class="form-header-logo page_margin px-16 pt-20 pb-16">
+          <div class="Heading">Welcome to Mayfair</div>
           <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
             <div class="mx-auto mb-8 w-72">
               <label class="block text-gray-400 text-xs" for="grid-first-name">Project *
