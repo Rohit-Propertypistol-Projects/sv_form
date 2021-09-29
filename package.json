@@ -19,8 +19,8 @@
     "vue": "^2.6.11",
     "vue-multiselect": "^2.1.6",
     "vue-signature-pad": "^2.0.0",
-    "vue-tailwind": "^2.4.2",
-    "vue-toastification": "^1.7.11"
+    "vue-swal": "^1.0.0",
+    "vue-tailwind": "^2.4.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

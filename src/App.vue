@@ -144,6 +144,10 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
 .form-header {
     background:#CEDBE4 ;
 }
+.form-header-logo {
+  background:#CEDBE4 ;
+  height: 100vh;
+}
 .form-body {
     background:#F1F6F9 ;
 }
@@ -200,6 +204,15 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
       padding-right: 2.5rem;
     }
 
+  @media all and (min-width:200px) and (max-width: 600px) {
+    .bottom_margin {
+      padding-bottom: 0.8rem !important;
+    }
+  }
+    .bottom_margin {
+      padding-bottom: 3rem;
+    }
+
 /* New css */
  .p-3 {
     padding: 0!important;
@@ -227,5 +240,17 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   gap: 8px;
   justify-content: center;
   margin-top: 8px;
+}
+.swal-modal {
+  width: 350px;
+}
+.swal-button {
+  background-color: #02044A !important;
+}
+.Heading {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 50px;
 }
 </style>

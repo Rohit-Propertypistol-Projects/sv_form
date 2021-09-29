@@ -1,4 +1,5 @@
 
+
 export function decodeSiteVisitParams(siteParams){
   let senddata = {}
   senddata['name'] = siteParams.name
@@ -19,7 +20,6 @@ export function decodeSiteVisitParams(siteParams){
   senddata['customer_reference_name'] = siteParams.customer_reference_name
   senddata['customer_reference_mobileno'] = siteParams.customer_reference_number
   senddata['project_ids'] = [siteParams.project_ids]
-  senddata['closing_executive'] = siteParams.closing_executive
   if ( siteParams.source_ids) {
     senddata['source_ids'] = siteParams.source_ids.map(i => i.id.toString())
   }
