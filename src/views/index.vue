@@ -72,25 +72,30 @@ export default {
       this.isLoading = true
       this.$axios.post(`mobile_crm/companies/${companyId}/leads`, {lead: apiParams})
         .then(res => {
-          this.$toast.success("Thank You for filling the Site Visit Form!", {
-            timeout: 5000
-          });
-          this.isLoading = false
-          this.fetchSite()
-          this.siteVisitParams = {}
-          this.$refs.svForm.showPage = false
-          this.$refs.svForm.$refs.signaturePad.clearSignature()
+          swal({
+            title: "Thank You for filling the Site Visit Form!",
+            icon: "success",
+          }).then(
+            this.isLoading = false,
+            this.fetchSite(),
+            this.siteVisitParams = {},
+            this.$refs.svForm.showPage = false,
+            this.$refs.svForm.$refs.signaturePad.clearSignature()
+          );
         })
         .catch(err => {
           this.isLoading = false
           if (err.response.status === 500) {
-            this.$toast.error("Server Error!", {
-              timeout: 5000
+            swal({
+              title: "Server Error!",
+              icon: "error",
             });
           } else {
             this.isLoading = false
-            this.$toast.info(err.response.data.message, {
-              timeout: 5000
+            swal({
+              title: "Error",
+              text: err.response.data.message,
+              icon: "error",
             });
           }
         })

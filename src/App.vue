@@ -232,4 +232,10 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   justify-content: center;
   margin-top: 8px;
 }
+.swal-modal {
+  width: 350px;
+}
+.swal-button {
+  background-color: #02044A;
+}
 </style>

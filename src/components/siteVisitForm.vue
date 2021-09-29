@@ -249,24 +249,29 @@ export default {
       this.$parent.isLoading = true
       this.$axios.post(`mobile_crm/companies/${companyId}/brokers`, {broker: this.brokerParams})
       .then(res => {
-        this.$toast.success('Success!', {
-          timeout: 5000
-        });
-        this.$parent.fetchSite();
-        this.brokerParams = {}
-        this.brokerModal = false
-        this.siteVisitParams.broker_id = res.data.broker.id
+        swal({
+          title: "Success!",
+          icon: "success",
+        }).then (
+          this.$parent.fetchSite(),
+          this.brokerParams = {},
+          this.brokerModal = false,
+          this.siteVisitParams.broker_id = res.data.broker.id
+        )
       })
       .catch(err => {
         this.$parent.isLoading = false
         if (err.response.status === 500) {
-          this.$toast.error('Server Error!', {
-            timeout: 5000
+          swal({
+            title: "Server Error!",
+            icon: "error",
           });
         } else {
           this.$parent.isLoading = false
-          this.$toast.info(err.response.data.message, {
-            timeout: 5000
+          swal({
+            title: "Error",
+            text: err.response.data.message,
+            icon: "error",
           });
         }
       })
