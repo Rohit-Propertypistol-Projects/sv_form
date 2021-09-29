@@ -22,7 +22,7 @@
          <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
         <p class="font-bold text-lg mb-2" id="form-header-text">Walkin / Site Visit Information Form</p>
       </div>
-        <div class="form-body page_margin px-16">
+        <div class="form-body page_margin bottom_margin px-16">
           <t-card class="rounded-0 bg-none" style="background: transparent; box-shadow: none;">
             <form @submit.prevent="submitFn()">
                 <div class="bg-white -mt-14 p-5 rounded-lg shadow-sm">
@@ -134,17 +134,7 @@
                   </div>
                 </label>
               </div>
-            </div>
-            <div class="bg-white mt-14 mb-14 p-5 rounded-lg shadow-sm">
-              <label class="block tracking-wide text-red-500 text-md font-bold mb-2 mt-5" id="header-text-colored" for="grid-first-name">
-                For Office Use Only
-              </label>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-5">
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Closing Manager *
-                <t-select v-model="siteVisitParams.closing_executive" required  placeholder="Select Closing Manager" :options="siteData.closing_users" class="mt-2" />
-              </label>
-            </div>
-            <button id="btn_clr" type="submit" class="bg-black text-white  py-2 px-8 mt-10 border rounded text-base font-medium">
+            <button id="btn_clr" type="submit" class="bg-black text-white py-2 px-8 mt-10 border rounded text-base font-medium">
               Submit
             </button>
           </div>

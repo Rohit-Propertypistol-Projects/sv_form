@@ -204,6 +204,15 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
       padding-right: 2.5rem;
     }
 
+  @media all and (min-width:200px) and (max-width: 600px) {
+    .bottom_margin {
+      padding-bottom: 0.8rem !important;
+    }
+  }
+    .bottom_margin {
+      padding-bottom: 3rem;
+    }
+
 /* New css */
  .p-3 {
     padding: 0!important;
@@ -236,6 +245,6 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   width: 350px;
 }
 .swal-button {
-  background-color: #02044A;
+  background-color: #02044A !important;
 }
 </style>
