@@ -1,4 +1,4 @@
-# mayfair-glitz-sv
+# Hawre-glitz-sv
 
 ## Project setup
 ```

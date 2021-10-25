@@ -20,31 +20,7 @@ export default {
     return {
       isLoading: false,
       siteData: {},
-      siteVisitParams: {
-        name: null,
-        email: null,
-        mobile: null,
-        other_phones: null,
-        occupation: null,
-        client_company_name: null,
-        designation: null,
-        marital_status: null,
-        address: null,
-        budget: null,
-        signature: null,
-        is_loan_require: null,
-        loan_amount: null,
-        bank_name: null,
-        purpose_of_buying: null,
-        customer_reference_name: null,
-        customer_reference_number: null,
-        source_ids: [],
-        resident_config: null,
-        project_ids: null,
-        broker_id: null,
-        building_status: null,
-        budget: null,
-      }
+      siteVisitParams: {}
     }
   },
   created() {
@@ -61,12 +37,6 @@ export default {
       })
     },
     addSiteVisitData(){
-      let { isEmpty, data } = this.$refs.svForm.$refs.signaturePad.saveSignature()
-      if (!isEmpty) {
-        this.siteVisitParams.signature = data
-      } else {
-        this.siteVisitParams.signature = null
-      }
       let apiParams = decodeSiteVisitParams(this.siteVisitParams)
       this.isLoading = true
       this.$axios.post(`mobile_crm/companies/${companyId}/leads`, {lead: apiParams})
@@ -79,7 +49,6 @@ export default {
             this.fetchSite(),
             this.siteVisitParams = {},
             this.$refs.svForm.showPage = false,
-            this.$refs.svForm.$refs.signaturePad.clearSignature()
           );
         })
         .catch(err => {
