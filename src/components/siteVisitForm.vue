@@ -3,11 +3,11 @@
     <t-card class="bg" v-if="!showPage">
       <form @submit.prevent="showPage = true">
         <div class="form-header-logo page_margin px-16 pt-20 pb-16">
-          <div class="Heading">Welcome to Mayfair</div>
-          <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
+          <div class="Heading">Welcome to Hawre</div>
+          <img class="mx-auto mb-8" src="@/assets/logo-sq.png">
             <div class="mx-auto mb-8 w-72">
               <label class="block text-gray-400 text-xs" for="grid-first-name">Project *
-                <t-select v-model="siteVisitParams.project_ids" required  placeholder="Select Project" :options="siteData.projects" class="mt-2" />
+                <t-select v-model="siteVisitParams.project_id" required  placeholder="Select Project" :options="siteData.projects" class="mt-2" />
               </label>
             </div>
               <div class="flex mt-8 justify-center">
@@ -20,7 +20,7 @@
     </t-card>
     <t-card class="bg" v-if="showPage">
       <div class="form-header page_margin px-16 pt-10 pb-16">
-         <img class="mx-auto mb-8" src="@/assets/logo-sm-n.png">
+         <img class="mx-auto mb-8" src="@/assets/logo-sq.png">
         <p class="font-bold text-lg mb-2" id="form-header-text">Walkin / Site Visit Information Form</p>
       </div>
         <div class="form-body page_margin bottom_margin px-16">
@@ -30,17 +30,9 @@
               <label class="block tracking-wide text-red-500 text-sm font-medium mb-2" id="header-text-colored" for="grid-first-name">
               Personal details
               </label>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
                 <label class="block text-gray-400 text-opacity-50 text-xs" for="grid-first-name">Full Name *
                   <t-input v-model="siteVisitParams.name" required  class="mt-2" name="my-input" />
-                </label>
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Email Address *
-                  <t-input v-model="siteVisitParams.email" class="mt-2" type="email" required  name="my-input" />
-                </label>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Current Address
-                  <t-input v-model="siteVisitParams.address" class="mt-2" name="my-textarea" />
                 </label>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
@@ -51,135 +43,53 @@
                   <t-input v-model="siteVisitParams.other_phones" type="number"  class="mt-2" name="my-input" />
                 </label>
               </div>
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
-              <label class="block text-gray-400 text-xs" for="grid-first-name" >Occupation *</label>
-              <t-radio-group v-model="siteVisitParams.occupation" class="text-gray-400" required :options="[{ value: 'Self-Employed', text: 'Self-Employed' }, { value: 'Salaried', text: 'Salaried' }]" name="occupation"></t-radio-group>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Company Name
-                <t-input v-model="siteVisitParams.client_company_name" type="text" class="mt-2"  name="my-input" />
-              </label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Designation
-                <t-input v-model="siteVisitParams.designation" type="text"  class="mt-2" name="my-input" />
-              </label>
-            </div>
-              <div class=" mt-5 border-b-2 border-grey-400 border-dashed pb-10">
-                <label class="block text-gray-400 text-xs mt-5" for="grid-first-name">Maratial Status * </label>
-                <t-radio-group v-model="siteVisitParams.marital_status" required class="mt-2 text-gray-400" :options="[{ value: 'Married', text: 'Married' }, { value: 'Unmarried', text: 'Unmarried' }]" name="Maratial"></t-radio-group>
-              </div>
-              <div class=" mt-5 border-b-2 border-grey-400 border-dashed pb-10">
-                <label class="block text-main text-sm mt-5 mb-5 font-bold" for="grid-first-name">How you come to know about your project ? </label>
-                <multiselect v-model="siteVisitParams.source_ids" :searchable="true"  placeholder="Select Sources" label="text" track-by="id" :options="siteData.sources" :multiple="true" :taggable="true"></multiselect>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-5">
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Broker
-                  <t-select v-model="siteVisitParams.broker_id"  :required="checkChannelPartner" placeholder="Select Broker" :options="siteData.brokers" class="mt-2" />
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Address *
+                  <t-input v-model="siteVisitParams.address" required class="mt-2" name="my-textarea" />
                 </label>
-                <button class="astext" type="button" @click="brokerModal = true">+ Add New Broker</button>
               </div>
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
+              <label class="block text-gray-400 text-xs" for="grid-first-name" >Profession</label>
+              <t-radio-group v-model="siteVisitParams.profession" class="text-gray-400" :options="[{ value: 'Job', text: 'Job' }, { value: 'Service', text: 'Service' }]" name="Profession"></t-radio-group>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
+              <label class="block text-gray-400 text-xs" for="grid-first-name">Name of company
+                <t-input v-model="siteVisitParams.company_name" type="text" class="mt-2"  name="my-input" />
+              </label>
+            </div>
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
+                <label class="block text-main text-sm font-bold" for="grid-first-name">How you come to know about your project ? </label>
+                 <t-select v-model="siteVisitParams.source_id" required  class="mt-2" placeholder="Select Source" :options="siteData.sources" />
+                <!-- <multiselect v-model="siteVisitParams.source_ids" required :searchable="true"  placeholder="Select Sources" label="text" track-by="id" :options="siteData.sources" :multiple="true" :taggable="true"></multiselect> -->
               </div>
                 <label class="block text-main text-sm font-bold mt-5" for="grid-first-name">Requirements </label>
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 border-b-2 border-grey-400 border-dashed pb-10 mb-5">
                    <div>
-                      <label class="block text-gray-400 text-xs mb-2" for="grid-first-name">Residential</label>
-                      <t-select v-model="siteVisitParams.resident_config" placeholder="Select Residential" :options="['1BHK', '2BHK', '3BHK', 'Shop']" />
+                      <label class="block text-gray-400 text-xs mb-2" for="grid-first-name">Configuration</label>
+                      <t-select v-model="siteVisitParams.configuration" placeholder="Select Residential" :options="['1BHK', '2BHK', '3BHK', 'Shop']" />
                    </div>
-                   <div>
-                     <label class="block text-gray-400 text-xs mb-2" for="grid-first-name">Status</label>
-                <t-select v-model="siteVisitParams.building_status" placeholder="Select Status" :options="['Under Construction', 'Nearing Completion', 'Ready Possession']" />
-                   </div>
-                       <div>
-                  <label class="block text-gray-400 text-xs" for="grid-first-name">Budget</label>
-                <t-input v-model="siteVisitParams.budget"  class="mt-2" type="number" name="my-input" />
-                   </div>
+                <div>
+                  <label class="block text-gray-400 text-xs" for="grid-first-name">Budget *</label>
+                  <t-input v-model="siteVisitParams.budget"  class="mt-2" required type="number" name="my-input" />
                   </div>
-                <label class="block text-main text-sm  font-bold mt-5 " for="grid-first-name">Housing Loan / Bridge Loan / LAP Requirement</label>
-                <t-radio-group v-model="siteVisitParams.is_loan_require"  @change="checkIsLoanRequire(siteVisitParams.is_loan_require)" class="mt-2" :options="[{ value: 'No', text: 'No' }, { value: 'Yes', text: 'Yes' }]" name="loan" />
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5" v-if="siteVisitParams.is_loan_require == 'Yes'">
-                  <label class="block text-gray-400 text-xs " for="grid-first-name">Loan amount (in lacs)
-                    <t-input v-model="siteVisitParams.loan_amount" type="number" required class="mt-2"  name="my-input" />
-                  </label>
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Home loan preferred from any particular bank
-                  <t-select v-model="siteVisitParams.bank_name" class="mt-2" placeholder="Select Bank Name" 
-                  :options="['ICICI', 'SBI', 'HDFC', 'DHFL', 'INDIABULLS', 'BOB', 'PNB', 'IDBI', 'AXIS', 'KOTAK', 'L&T', 'Others']" />
-                </label>
                 </div>
-
-                <label class="block text-gray-400 text-xs mt-5 mb-2" for="grid-first-name">Purpose of buying</label>
-                <t-select v-model="siteVisitParams.purpose_of_buying" placeholder="Select Purpose of buying" :options="['Self Use', 'Investment']" />
-
-                <label class="block text-main text-sm  font-bold mt-5 " for="grid-first-name">Any customer reference you can suggest</label>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-                  <label class="block text-gray-400 text-xs" for="grid-first-name">Full Name
-                    <t-input v-model="siteVisitParams.customer_reference_name" type="text" class="mt-2"  name="my-input" />
+                  <label class="block text-gray-400 text-xs " for="grid-first-name">Called By *
+                     <t-select v-model="siteVisitParams.user_id" required  class="mt-2" placeholder="Select Called By" :options="siteData.presale_users" />
                   </label>
-                  <label class="block text-gray-400 text-xs" for="grid-first-name">Mobile Number
-                    <t-input v-model="siteVisitParams.customer_reference_number" type="number"  class="mt-2" name="my-input" />
+                  <label class="block text-gray-400 text-xs" for="grid-first-name">Assigned To *
+                    <t-select v-model="siteVisitParams.closing_executive" required  class="mt-2" placeholder="Select Assigned To" :options="siteData.closing_users" />
                   </label>
                 </div>
-                <label class="block text-main text-sm mt-5" for="grid-first-name">
-                  I hereby declare that the above information provided by me is correct and can be use for all future project communication
-                </label>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-                  <label class="block text-gray-400 text-xs font-normal" for="grid-first-name">Sign in the given box
-                    <div class="container mt-2">
-                      <VueSignaturePad
-                        id="signature"
-                        height="140px"
-                        ref="signaturePad"
-                        :options="options"
-                      />
-                    <div class="buttons">
-                      <button type="button" @click="clearSignature">Clear</button>
-                    </div>
-                  </div>
-                </label>
-              </div>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
+                  <label class="block text-gray-400 text-xs" for="grid-first-name">Comment</label>
+                  <t-input v-model="siteVisitParams.comment" class="mt-2" name="my-textarea" />
+                </div>
             <button id="btn_clr" type="submit" class="bg-black text-white py-2 px-8 mt-10 border rounded text-base font-medium">
               Submit
             </button>
           </div>
          </form>
-          <!-- Modal -->
-          <t-modal
-            v-model="brokerModal"
-            class="p-4"
-          >
-            <t-card class="rounded-lg p-6">
-              <h3 class="text-main mb-5 font-medium text-base">Add Broker</h3>
-              <form  @submit.prevent="addBroker()">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-                  <label class="block text-gray-400 text-sm " for="grid-first-name">Name *
-                    <t-input v-model="brokerParams.name" required  class="mt-2" name="my-input" />
-                  </label>
-                  <label class="block text-gray-400 text-sm " for="grid-first-name">Email *
-                    <t-input v-model="brokerParams.email" class="mt-2" type="email" required  name="my-input" />
-                  </label>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-                  <label class="block text-gray-400 text-sm" for="grid-first-name">Mobile *
-                    <t-input v-model="brokerParams.mobile" required  type="number" class="mt-2" name="my-input" />
-                  </label>
-                  <label class="block text-gray-400 text-sm" for="grid-first-name">Rera Number *
-                    <t-input v-model="brokerParams.rera_number" class="mt-2" type="text" required  name="my-input" />
-                  </label>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-                  <label class="block text-gray-400 text-sm" for="grid-first-name">Firm Name
-                    <t-input v-model="brokerParams.firm_name"  class="mt-2" name="my-input" />
-                  </label>
-                  <label class="block text-gray-400 text-sm" for="grid-first-name">Locality
-                    <t-input v-model="brokerParams.locality" class="mt-2" type="text"  name="my-input" />
-                  </label>
-                </div>
-                <div class="flex mt-8">
-                  <t-button id="btn_clr" type="submit" class="px-8 text-base font-medium">
-                    Submit
-                  </t-button>
-                </div>
-              </form>
-            </t-card>
-          </t-modal>
         </t-card>
       </div>
     </t-card>
@@ -189,11 +99,7 @@
 <script>
 /*eslint-disable */
 import {companyId} from '@/assets/scripts/utility.js';
-import Multiselect from 'vue-multiselect'
 export default {
-  components: {
-    Multiselect
-  },
   props: {
     siteVisitParams: {
       type: Object,
@@ -214,67 +120,8 @@ export default {
         penColor: "black",
       },
       showPage: false,
-      brokerModal: false,
-      brokerParams: {
-        name: null,
-        email: null,
-        mobile: null,
-        rera_number: null,
-        firm_name: null,
-        locality: null,
-      }
     }
   },
-  methods: {
-    clearSignature() {
-      this.$refs.signaturePad.clearSignature();
-      this.siteVisitParams.signature = null
-    },
-    checkIsLoanRequire(loan_require) {
-       if (loan_require == 'No') {
-         this.siteVisitParams.loan_amount = null
-         this.siteVisitParams.bank_name = null
-       }
-    },
-    addBroker() {
-      this.$parent.isLoading = true
-      this.$axios.post(`mobile_crm/companies/${companyId}/brokers`, {broker: this.brokerParams})
-      .then(res => {
-        swal({
-          title: "Success!",
-          icon: "success",
-        }).then (
-          this.$parent.fetchSite(),
-          this.brokerParams = {},
-          this.brokerModal = false,
-          this.siteVisitParams.broker_id = res.data.broker.id
-        )
-      })
-      .catch(err => {
-        this.$parent.isLoading = false
-        if (err.response.status === 500) {
-          swal({
-            title: "Server Error!",
-            icon: "error",
-          });
-        } else {
-          this.$parent.isLoading = false
-          swal({
-            title: "Error",
-            text: err.response.data.message,
-            icon: "error",
-          });
-        }
-      })
-    },
-  },
-  computed: {
-    checkChannelPartner() {
-      if (this.siteVisitParams.source_ids) {
-        return this.siteVisitParams.source_ids.map(s => s.id).some(s => this.siteData.cp_sources_ids.includes(s));
-      }
-    }
-  }
 }
 </script>
 

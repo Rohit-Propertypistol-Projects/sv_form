@@ -7,12 +7,12 @@ module.exports = {
       exclude: ['service-worker.js']
     },
     manifestOptions: {
-      description: 'MayFair',
+      description: 'Hawre',
       lang: 'en-IN',
       orientation: 'portrait-primary',
       background_color: "#fff",
-      name: 'MayFair',
-      short_name: 'MayFair',
+      name: 'Hawre',
+      short_name: 'Hawre',
       display: 'standalone',
       start_url: '.',
       theme_color: '#F07B00',

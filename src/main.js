@@ -5,13 +5,11 @@ import VueTailwind from 'vue-tailwind/dist/full'
 import axios from 'axios'
 import {token} from '@/assets/scripts/utility.js';
 import VueSwal from 'vue-swal';
-import VueSignaturePad from 'vue-signature-pad';
 import './registerServiceWorker'
 
 
 Vue.use(VueSwal);
 Vue.use(VueTailwind);
-Vue.use(VueSignaturePad);
 
 let baseUrl="http://mayfair-glitz.apps.enrichr.co/api/";
 if(process.env.NODE_ENV === 'production'){
