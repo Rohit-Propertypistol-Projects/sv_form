@@ -11,9 +11,9 @@ import './registerServiceWorker'
 Vue.use(VueSwal);
 Vue.use(VueTailwind);
 
-let baseUrl="http://mayfair-glitz.apps.enrichr.co/api/";
+let baseUrl="http://haware.glitz.apps.enrichr.co/api/";
 if(process.env.NODE_ENV === 'production'){
-  baseUrl = "http://mayfair-glitz.apps.enrichr.co/api/";
+  baseUrl = "http://haware.glitz.apps.enrichr.co/api/";
 }
 axios.defaults.baseURL = baseUrl;
 axios.defaults.headers = {
