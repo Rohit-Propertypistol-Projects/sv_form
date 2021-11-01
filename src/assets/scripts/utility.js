@@ -21,5 +21,5 @@ export function decodeSiteVisitParams(siteParams){
   return senddata;
 }
 
-export const token = process.env.NODE_ENV === 'production' ? 'da341249439a9e72' : 'f9de35b4710c5e28'
-export const companyId = process.env.NODE_ENV === 'production' ? 'fd8bbb16-e399-4e8f-a1fa-8a9eb337123a' : 'f7134b01-f362-4efd-8843-62a9ac217bec'
+export const token = process.env.NODE_ENV === 'production' ? '275cd6622ac92e29' : '275cd6622ac92e29'
+export const companyId = process.env.NODE_ENV === 'production' ? '1ee77b89-5d15-41e5-9408-610dfad3c295' : '1ee77b89-5d15-41e5-9408-610dfad3c295'
