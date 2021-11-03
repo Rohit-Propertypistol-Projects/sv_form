@@ -80,7 +80,12 @@
                      <t-select v-model="siteVisitParams.user_id" required  class="mt-2" placeholder="Select Called By" :options="siteData.presale_users" />
                   </label>
                   <label class="block text-gray-400 text-xs" for="grid-first-name">Assigned To *
-                    <t-select v-model="siteVisitParams.cls_manager" required  class="mt-2" placeholder="Select Assigned To" :options="closing_users" />
+                    <t-select v-model="siteVisitParams.closing_executive" required  class="mt-2" placeholder="Select Assigned To" :options="siteData.closing_users" />
+                  </label>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
+                  <label class="block text-gray-400 text-xs " for="grid-first-name">Closing Manager
+                     <t-select v-model="siteVisitParams.cls_manager" required  class="mt-2" placeholder="Select Closing Manager" :options="closing_manager" />
                   </label>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
@@ -121,7 +126,7 @@ export default {
       options: {
         penColor: "black",
       },
-      closing_users: [
+      closing_manager: [
         'Sampat Dhaigude',
         'Gourav Verma',
         'Shekhar Waghmare',
