@@ -16,6 +16,7 @@ export function decodeSiteVisitParams(siteParams){
   senddata['configuration'] = siteParams.configuration
   senddata['client_budget'] = siteParams.client_budget
   senddata['user_id'] = siteParams.user_id
+  senddata['closing_executive'] = siteParams.closing_executive
   senddata['cls_manager'] = siteParams.cls_manager
   senddata['comment'] = siteParams.comment
   return senddata;
