@@ -3,7 +3,7 @@
     <t-card class="bg" v-if="!showPage">
       <form @submit.prevent="showPage = true">
         <div class="form-header-logo page_margin px-16 pt-20 pb-16">
-          <div class="Heading">Welcome to Hawre</div>
+          <div class="Heading">Welcome to Haware</div>
           <img class="mx-auto mb-8" src="@/assets/logo-sq.png">
             <div class="mx-auto mb-8 w-72">
               <label class="block text-gray-400 text-xs" for="grid-first-name">Project *
@@ -48,13 +48,12 @@
                   <t-input v-model="siteVisitParams.address" required class="mt-2" name="my-textarea" />
                 </label>
               </div>
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
-              <label class="block text-gray-400 text-xs" for="grid-first-name" >Profession</label>
-              <t-radio-group v-model="siteVisitParams.profession" class="text-gray-400" :options="[{ value: 'Job', text: 'Job' }, { value: 'Service', text: 'Service' }]" name="Profession"></t-radio-group>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+              <label class="block text-gray-400 text-xs " for="grid-first-name">Profession
+                <t-select v-model="siteVisitParams.profession"  class="mt-2" placeholder="Select Profession" :options="['Job/Service', 'Business', 'Professional']" />
+              </label>
               <label class="block text-gray-400 text-xs" for="grid-first-name">Name of company
-                <t-input v-model="siteVisitParams.company_name" type="text" class="mt-2"  name="my-input" />
+                <t-input v-model="siteVisitParams.company_name"  class="mt-2" type="text"  name="my-input" />
               </label>
             </div>
               <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
@@ -66,11 +65,14 @@
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 border-b-2 border-grey-400 border-dashed pb-10 mb-5">
                    <div>
                       <label class="block text-gray-400 text-xs mb-2" for="grid-first-name">Configuration</label>
-                      <t-select v-model="siteVisitParams.configuration" placeholder="Select Residential" :options="['1BHK', '2BHK', '3BHK', 'Shop']" />
+                      <t-select v-model="siteVisitParams.configuration" placeholder="Select Residential" :options="['1 BHK', '2 BHK', '3 BHK', '4 BHK', '5 BHK', 'Shop', 'Office']" />
                    </div>
                 <div>
                   <label class="block text-gray-400 text-xs" for="grid-first-name">Budget *</label>
-                  <t-input v-model="siteVisitParams.budget"  class="mt-2" required type="number" name="my-input" />
+                  <!-- <t-input v-model="siteVisitParams.budget"  class="mt-2" required type="number" name="my-input" /> -->
+                  <t-select v-model="siteVisitParams.client_budget" class="mt-2" required placeholder="Select Budget" :options="['10 Lakh to 20 Lakh', '20 Lakh to 30 Lakh', 
+                  '30 Lakh to 40 Lakh', '40 Lakh to 50 Lakh', '60 Lakh to 70 Lakh', '70 Lakh to 80 Lakh', '90 Lakh to 1 Cr', '1 Cr to 1.25 Cr',
+                  '1.25 Cr - 1.5 Cr', '1.5 Cr to 1.75 Cr', '1.75 Cr to 2 Cr', '2 Cr to 2.25 Cr', '2.25 Cr to 2.5 Cr', '2.5 Cr & Above']" />
                   </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
@@ -78,7 +80,7 @@
                      <t-select v-model="siteVisitParams.user_id" required  class="mt-2" placeholder="Select Called By" :options="siteData.presale_users" />
                   </label>
                   <label class="block text-gray-400 text-xs" for="grid-first-name">Assigned To *
-                    <t-select v-model="siteVisitParams.closing_executive" required  class="mt-2" placeholder="Select Assigned To" :options="siteData.closing_users" />
+                    <t-select v-model="siteVisitParams.cls_manager" required  class="mt-2" placeholder="Select Assigned To" :options="closing_users" />
                   </label>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
@@ -119,6 +121,19 @@ export default {
       options: {
         penColor: "black",
       },
+      closing_users: [
+        'Sampat Dhaigude',
+        'Gourav Verma',
+        'Shekhar Waghmare',
+        'Akanksha Bilthare',
+        'Ajay Walvekar',
+        'Shahbuddin Shaikh',
+        'Pallavi Salve',
+        'Ashok Gaud',
+        'Ganesh Patil',
+        'Pratik Bhatia',
+        'Deepali Waghmare'
+      ],
       showPage: false,
     }
   },
