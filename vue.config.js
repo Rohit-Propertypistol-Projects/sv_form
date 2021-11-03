@@ -7,12 +7,12 @@ module.exports = {
       exclude: ['service-worker.js']
     },
     manifestOptions: {
-      description: 'Hawre',
+      description: 'Haware',
       lang: 'en-IN',
       orientation: 'portrait-primary',
       background_color: "#fff",
-      name: 'Hawre',
-      short_name: 'Hawre',
+      name: 'Haware',
+      short_name: 'Haware',
       display: 'standalone',
       start_url: '.',
       theme_color: '#F07B00',

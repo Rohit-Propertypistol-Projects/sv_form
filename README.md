@@ -1,4 +1,4 @@
-# Hawre-glitz-sv
+# Haware-glitz-sv
 
 ## Project setup
 ```
