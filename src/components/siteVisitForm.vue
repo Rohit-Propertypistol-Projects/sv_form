@@ -65,13 +65,13 @@
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 border-b-2 border-grey-400 border-dashed pb-10 mb-5">
                    <div>
                       <label class="block text-gray-400 text-xs mb-2" for="grid-first-name">Configuration</label>
-                      <t-select v-model="siteVisitParams.configuration" placeholder="Select Residential" :options="['1 BHK', '2 BHK', '3 BHK', '4 BHK', '5 BHK', 'Shop', 'Office']" />
+                      <t-select v-model="siteVisitParams.configuration" placeholder="Select Residential" :options="['1 RK', 'Studio', '1 BHK', '2 BHK', '3 BHK', '3.5 BHK', '4 BHK', '5 BHK', 'Shop', 'Office']" />
                    </div>
                 <div>
                   <label class="block text-gray-400 text-xs" for="grid-first-name">Budget *</label>
                   <!-- <t-input v-model="siteVisitParams.budget"  class="mt-2" required type="number" name="my-input" /> -->
                   <t-select v-model="siteVisitParams.client_budget" class="mt-2" required placeholder="Select Budget" :options="['10 Lakh to 20 Lakh', '20 Lakh to 30 Lakh', 
-                  '30 Lakh to 40 Lakh', '40 Lakh to 50 Lakh', '60 Lakh to 70 Lakh', '70 Lakh to 80 Lakh', '90 Lakh to 1 Cr', '1 Cr to 1.25 Cr',
+                  '30 Lakh to 40 Lakh', '40 Lakh to 50 Lakh', '50 Lakh to 60 Lakh', '60 Lakh to 70 Lakh', '70 Lakh to 80 Lakh', '80 Lakh to 90 Lakh', '90 Lakh to 1 Cr', '1 Cr to 1.25 Cr',
                   '1.25 Cr - 1.5 Cr', '1.5 Cr to 1.75 Cr', '1.75 Cr to 2 Cr', '2 Cr to 2.25 Cr', '2.25 Cr to 2.5 Cr', '2.5 Cr & Above']" />
                   </div>
                 </div>
