@@ -1,4 +1,4 @@
-# Haware-glitz-sv
+# Ekdanta-glitz-sv
 
 ## Project setup
 ```

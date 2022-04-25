@@ -1,5 +1,5 @@
 {
-  "name": "haware-glitz-sv",
+  "name": "ekdanta-glitz-sv",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,10 +13,12 @@
     "autoprefixer": "^9",
     "axios": "^0.21.4",
     "core-js": "^3.6.5",
+    "luxon": "^1.25.0",
     "postcss": "^7",
     "register-service-worker": "^1.7.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^2.6.11",
+    "vue-datetime": "^1.0.0-beta.14",
     "vue-swal": "^1.0.0",
     "vue-tailwind": "^2.4.2"
   },

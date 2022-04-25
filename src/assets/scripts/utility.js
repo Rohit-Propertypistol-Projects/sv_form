@@ -4,23 +4,36 @@ export function decodeSiteVisitParams(siteParams){
   let senddata = {}
   senddata['name'] = siteParams.name
   senddata['mobile'] = siteParams.mobile
-  senddata['other_phones'] = siteParams.other_phones
-  senddata['address'] = siteParams.address
-  senddata['profession'] = siteParams.profession
-  senddata['company_name'] = siteParams.company_name
+  senddata['dob'] = siteParams.dob
+  senddata['address1'] = siteParams.address1
+  senddata['locality_id'] = siteParams.locality_id
+  senddata['city_id'] = siteParams.city_id
+  senddata['pincode'] = siteParams.pincode
+  senddata['landline'] = siteParams.landline
+  senddata['occupation'] = siteParams.occupation
+  senddata['organization'] = siteParams.organization
+  senddata['office_location'] = siteParams.office_location
+  senddata['designation'] = siteParams.designation
+  senddata['car_make'] = siteParams.car_make
+  senddata['car_model'] = siteParams.car_model
+  senddata['budget_range'] = siteParams.budget_range
   if ( siteParams.source_id) {
     // senddata['source_ids'] = siteParams.source_ids.map(i => i.id.toString())
     senddata['source_id'] = siteParams.source_id
   }
+  senddata['enquiry_sub_source_id'] = siteParams.enquiry_sub_source_id
   senddata['project_id'] = siteParams.project_id
   senddata['configuration'] = siteParams.configuration
-  senddata['client_budget'] = siteParams.client_budget
-  senddata['user_id'] = siteParams.user_id
-  senddata['closing_executive'] = siteParams.closing_executive
-  senddata['cls_manager'] = siteParams.cls_manager
-  senddata['comment'] = siteParams.comment
+  senddata['purpose'] = siteParams.purpose
+  senddata['current_residence'] = siteParams.current_residence
+  senddata['current_owner'] = siteParams.current_owner
+  senddata['broker_id'] = siteParams.broker_id
+  senddata['friend_name_1'] = siteParams.friend_name_1
+  senddata['friend_name_2'] = siteParams.friend_name_2
+  senddata['friend_contact_1'] = siteParams.friend_contact_1
+  senddata['friend_contact_2'] = siteParams.friend_contact_2
   return senddata;
 }
 
-export const token = process.env.NODE_ENV === 'production' ? '275cd6622ac92e29' : '275cd6622ac92e29'
-export const companyId = process.env.NODE_ENV === 'production' ? '1ee77b89-5d15-41e5-9408-610dfad3c295' : '1ee77b89-5d15-41e5-9408-610dfad3c295'
+export const token = process.env.NODE_ENV === 'production' ? '83a7ed70e78ceba6' : '83a7ed70e78ceba6'
+export const companyId = process.env.NODE_ENV === 'production' ? 'e43e17e7-85f2-4427-8c87-013692853b62' : 'e43e17e7-85f2-4427-8c87-013692853b62'
