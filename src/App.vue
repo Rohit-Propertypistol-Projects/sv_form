@@ -253,4 +253,10 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   text-align: center;
   padding-bottom: 50px;
 }
+.vdatetime-input {
+  width: 100% !important;
+--tw-border-opacity: 1  !important;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity)) !important;
+  border-radius: 2px  !important;
+}
 </style>

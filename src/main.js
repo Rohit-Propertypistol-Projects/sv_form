@@ -6,14 +6,17 @@ import axios from 'axios'
 import {token} from '@/assets/scripts/utility.js';
 import VueSwal from 'vue-swal';
 import './registerServiceWorker'
+import { Datetime } from 'vue-datetime';
+import 'vue-datetime/dist/vue-datetime.css'
 
 
 Vue.use(VueSwal);
+Vue.use(Datetime)
 Vue.use(VueTailwind);
 
-let baseUrl="http://haware.glitz.apps.enrichr.co/api/";
+let baseUrl="http://ekdantadevelopers.glitz.apps.enrichr.co/api/";
 if(process.env.NODE_ENV === 'production'){
-  baseUrl = "http://haware.glitz.apps.enrichr.co/api/";
+  baseUrl = "http://ekdantadevelopers.glitz.apps.enrichr.co/api/";
 }
 axios.defaults.baseURL = baseUrl;
 axios.defaults.headers = {

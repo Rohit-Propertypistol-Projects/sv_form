@@ -7,12 +7,12 @@ module.exports = {
       exclude: ['service-worker.js']
     },
     manifestOptions: {
-      description: 'Haware',
+      description: 'Ekdanta',
       lang: 'en-IN',
       orientation: 'portrait-primary',
       background_color: "#fff",
-      name: 'Haware',
-      short_name: 'Haware',
+      name: 'Ekdanta',
+      short_name: 'Ekdanta',
       display: 'standalone',
       start_url: '.',
       theme_color: '#F07B00',
