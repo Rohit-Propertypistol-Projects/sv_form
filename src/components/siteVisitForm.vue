@@ -31,7 +31,7 @@
               There is a lot in a name, Could we please know yours?
               </label>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label class="block text-gray-400 text-opacity-50 text-xs mb-3" for="grid-first-name">Name *
+                <label class="block text-gray-400 text-opacity-50 text-xs mb-3" for="grid-first-name">Full Name *
                   <t-input v-model="siteVisitParams.name" required  class="mt-2" name="my-input" />
                 </label>
                 <label class="block text-gray-400 text-xs" for="grid-first-name">Mobile *
@@ -42,8 +42,8 @@
                 We will Look Forward to your birthday every year.
               </label>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <label class="block text-gray-400 text-opacity-50 text-xs" for="grid-first-name">Date of Birth *
-                    <datetime type="date" v-model="siteVisitParams.dob" required placeholder="Date of Birth" class="mt-2 text-gray-800">
+                  <label class="block text-gray-400 text-opacity-50 text-xs" for="grid-first-name">Date of Birth
+                    <datetime type="date" v-model="siteVisitParams.dob" placeholder="Date of Birth" class="mt-2 text-gray-800">
                     </datetime>
                   </label>
               </div>
@@ -51,16 +51,16 @@
                 We would love to be in touch with you.
               </label>
               <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Address
-                  <t-input v-model="siteVisitParams.address1" class="mt-2" name="my-textarea" />
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Address *
+                  <t-input v-model="siteVisitParams.address1" required class="mt-2" name="my-textarea" />
                 </label>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Locality
-                  <t-select v-model="siteVisitParams.locality_id"  class="mt-2" placeholder="Select Locality" :options="siteData.localities" />
+                <label class="block text-gray-400 text-xs" for="grid-first-name">City *
+                  <t-select v-model="siteVisitParams.city_id"  class="mt-2" required placeholder="Select City" :options="siteData.cities" />
                 </label>
-                <label class="block text-gray-400 text-xs" for="grid-first-name">City
-                  <t-select v-model="siteVisitParams.city_id"  class="mt-2" placeholder="Select City" :options="siteData.cities" />
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Locality
+                  <t-select v-model="siteVisitParams.locality_id"  class="mt-2" placeholder="Select Locality" :options="localities" />
                 </label>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-2">
@@ -105,23 +105,23 @@
                Allow us to aid you in choosing your dream Residence
             </label>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Budget
-              <t-select v-model="siteVisitParams.budget_range" class="mt-2" placeholder="Select Budget"
+              <label class="block text-gray-400 text-xs" for="grid-first-name">Budget *
+              <t-select v-model="siteVisitParams.budget_range" required class="mt-2" placeholder="Select Budget"
               :options="['Below 70 Lakh', '70-80 Lakh', '80-90 Lakh', '90-1 Cr', '1-1.2 Cr', '1.2-1.4 Cr', '1.4-1.5 Cr', 'Above 1.5 Cr']" /></label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Configuration
-                <t-select v-model="siteVisitParams.configuration" class="mt-2" placeholder="Select Configuration" :options="['1 BHK', '2 BHK', '3 BHK']" /></label>
+              <label class="block text-gray-400 text-xs" for="grid-first-name">Configuration *
+                <t-select v-model="siteVisitParams.configuration" required class="mt-2" placeholder="Select Configuration" :options="['1 BHK', '2 BHK', '3 BHK']" /></label>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-              <label class="block text-gray-400 text-xs " for="grid-first-name">Purpose of purchase
-                <t-select v-model="siteVisitParams.purpose" class="mt-2" placeholder="Select purchase" :options="['Personal Use', 'Investment']" />
+              <label class="block text-gray-400 text-xs " for="grid-first-name">Purpose of purchase *
+                <t-select v-model="siteVisitParams.purpose" class="mt-2" required placeholder="Select purchase" :options="['Personal Use', 'Investment']" />
               </label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Current Residence type
-                <t-select v-model="siteVisitParams.current_residence"  class="mt-2" placeholder="Select Current Residence type" :options="['1 BHK', '2 BHK']" />
+              <label class="block text-gray-400 text-xs" for="grid-first-name">Current Residence type *
+                <t-select v-model="siteVisitParams.current_residence" required class="mt-2" placeholder="Select Current Residence type" :options="['1 BHK', '2 BHK']" />
               </label>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-2">
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Current Residence Ownership
-                <t-select v-model="siteVisitParams.current_owner"  class="mt-2" placeholder="Select Current Residence Ownership" :options="['Owner', 'Rental']" />
+              <label class="block text-gray-400 text-xs" for="grid-first-name">Current Residence Ownership *
+                <t-select v-model="siteVisitParams.current_owner" required class="mt-2" placeholder="Select Current Residence Ownership" :options="['Owner', 'Rental']" />
               </label>
             </div>
             <label class="block text-main text-sm font-bold mb-3 mt-3" for="grid-first-name">
@@ -232,6 +232,13 @@ export default {
     },
     is_digital_sub_souces() {
       return this.siteData.digital_sources_ids.includes(parseInt(this.siteVisitParams.source_id))
+    },
+    localities() {
+      if (this.siteVisitParams.city_id) {
+         return this.siteData.localities.filter(l => l.city_id == this.siteVisitParams.city_id)
+      } else {
+        return []
+      }
     }
   }
 }
