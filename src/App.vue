@@ -253,6 +253,14 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   text-align: center;
   padding-bottom: 50px;
 }
+.astext {
+  background:none;
+  border:none;
+  margin-top:20px;
+  cursor: pointer;
+  flex-flow: column-reverse;
+  margin-top: 32px;
+}
 .vdatetime-input {
   width: 100% !important;
 --tw-border-opacity: 1  !important;

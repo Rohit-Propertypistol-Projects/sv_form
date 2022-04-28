@@ -136,18 +136,30 @@
                 <t-select v-model="siteVisitParams.enquiry_sub_source_id" required  class="mt-2" placeholder="Select Sub Source" :options="siteData.digital_sub_souces" />
               </label>
             </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_referal">
+                <label class="block text-gray-400 text-xs " for="grid-first-name">Referal Name
+                  <t-input v-model="siteVisitParams.referal_name"  class="mt-2" type="text"  name="my-input" />
+                </label>
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Referal Mobile No
+                  <t-input v-model="siteVisitParams.referal_mobile"  class="mt-2" maxlength="10" type="tel"  name="my-input" />
+                </label>
+              </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_ChannelPartner">
                 <label class="block text-gray-400 text-xs" for="grid-first-name">Channel Partner *
                   <t-select v-model="siteVisitParams.broker_id" required  @input="getCPDetails(siteVisitParams.broker_id)" class="mt-2" placeholder="Select Channel Partner" :options="siteData.brokers" />
                 </label>
+                <button class="astext" type="button" @click="brokerModal = true">+ Add New Channel Partner</button>
+
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_ChannelPartner">
                 <label class="block text-gray-400 text-xs " for="grid-first-name">Channel Partner Company Name
                   <t-input v-model="siteVisitParams.firm_name"  id="firm_name" disabled class="mt-2" type="text"  name="my-input" />
                 </label>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_ChannelPartner">
                 <label class="block text-gray-400 text-xs " for="grid-first-name">RERA ID
                   <t-input v-model="siteVisitParams.rera_no" id="rera_no" disabled class="mt-2" type="text"  name="my-input" />
                 </label>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_ChannelPartner">
                 <label class="block text-gray-400 text-xs" for="grid-first-name">Mobile No
                   <t-input v-model="siteVisitParams.mobile_no"  id="mobile_no" disabled class="mt-2" type="text"  name="my-input" />
                 </label>
@@ -176,6 +188,46 @@
                 </button>
           </div>
          </form>
+          <!-- Modal -->
+          <t-modal
+            v-model="brokerModal"
+            class="p-4"
+          >
+            <t-card class="rounded-lg p-6">
+              <h3 class="text-main mb-5 font-medium text-base">Add Channel Partner</h3>
+              <form  @submit.prevent="addBroker()">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                  <label class="block text-gray-400 text-sm " for="grid-first-name">Name *
+                    <t-input v-model="brokerParams.name" required  class="mt-2" name="my-input" />
+                  </label>
+                  <label class="block text-gray-400 text-sm " for="grid-first-name">Email
+                    <t-input v-model="brokerParams.email" class="mt-2" type="email"  name="my-input" />
+                  </label>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                  <label class="block text-gray-400 text-sm" for="grid-first-name">Mobile *
+                    <t-input v-model="brokerParams.mobile" required  maxlength="10" type="tel" class="mt-2" name="my-input" />
+                  </label>
+                  <label class="block text-gray-400 text-sm" for="grid-first-name">Rera Number
+                    <t-input v-model="brokerParams.rera_number" class="mt-2" type="text" name="my-input" />
+                  </label>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                  <label class="block text-gray-400 text-sm" for="grid-first-name">Firm Name
+                    <t-input v-model="brokerParams.firm_name"  class="mt-2" name="my-input" />
+                  </label>
+                  <label class="block text-gray-400 text-sm" for="grid-first-name">Locality
+                    <t-input v-model="brokerParams.locality" class="mt-2" type="text"  name="my-input" />
+                  </label>
+                </div>
+                <div class="flex mt-8">
+                  <t-button id="btn_clr" type="submit" class="px-8 text-base font-medium">
+                    Submit
+                  </t-button>
+                </div>
+              </form>
+            </t-card>
+          </t-modal>
         </t-card>
       </div>
     </t-card>
@@ -208,6 +260,15 @@ export default {
   data() {
     return {
       showPage: false,
+      brokerModal: false,
+      brokerParams: {
+        name: null,
+        email: null,
+        mobile: null,
+        rera_number: null,
+        firm_name: null,
+        locality: null,
+      }
     }
   },
   methods: {
@@ -224,7 +285,41 @@ export default {
       }).catch(err => {
         this.$parent.isLoading = false
       })
-    }
+    },
+    addBroker() {
+      this.$parent.isLoading = true
+      this.$axios.post(`mobile_crm/companies/${companyId}/brokers`, {broker: this.brokerParams})
+      .then(res => {
+        swal({
+          title: "Success!",
+          icon: "success",
+        }).then (
+          this.$parent.fetchSite(),
+          this.brokerParams = {},
+          this.brokerModal = false,
+          this.siteVisitParams.broker_id = res.data.broker.id,
+          this.siteVisitParams.firm_name = res.data.broker.firm_name,
+          this.siteVisitParams.rera_no = res.data.broker.rera_number,
+          this.siteVisitParams.mobile_no = res.data.broker.mobile
+        )
+      })
+      .catch(err => {
+        this.$parent.isLoading = false
+        if (err.response.status === 500) {
+          swal({
+            title: "Server Error!",
+            icon: "error",
+          });
+        } else {
+          this.$parent.isLoading = false
+          swal({
+            title: "Error",
+            text: err.response.data.message,
+            icon: "error",
+          });
+        }
+      })
+    },
   },
   computed: {
     is_ChannelPartner() {
@@ -232,6 +327,9 @@ export default {
     },
     is_digital_sub_souces() {
       return this.siteData.digital_sources_ids.includes(parseInt(this.siteVisitParams.source_id))
+    },
+    is_referal() {
+      return this.siteData.reference_source_ids.includes(parseInt(this.siteVisitParams.source_id))
     },
     localities() {
       if (this.siteVisitParams.city_id) {
