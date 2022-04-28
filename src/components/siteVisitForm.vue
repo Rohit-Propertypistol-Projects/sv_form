@@ -137,10 +137,10 @@
               </label>
             </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_referal">
-                <label class="block text-gray-400 text-xs " for="grid-first-name">Referal Name
+                <label class="block text-gray-400 text-xs " for="grid-first-name">Referrer Name
                   <t-input v-model="siteVisitParams.referal_name"  class="mt-2" type="text"  name="my-input" />
                 </label>
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Referal Mobile No
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Referrer Mobile No
                   <t-input v-model="siteVisitParams.referal_mobile"  class="mt-2" minlength="10" type="tel"  name="my-input" />
                 </label>
               </div>
