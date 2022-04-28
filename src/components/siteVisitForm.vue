@@ -35,7 +35,7 @@
                   <t-input v-model="siteVisitParams.name" required  class="mt-2" name="my-input" />
                 </label>
                 <label class="block text-gray-400 text-xs" for="grid-first-name">Mobile *
-                  <t-input v-model="siteVisitParams.mobile" required class="mt-2" maxlength="10" type="tel"  name="my-input" />
+                  <t-input v-model="siteVisitParams.mobile" required class="mt-2" minlength="10" type="tel"  name="my-input" />
                 </label>
               </div>
               <label class="block text-main text-sm font-bold mb-3" for="grid-first-name">
@@ -68,7 +68,7 @@
                   <t-input v-model="siteVisitParams.pincode"  class="mt-2" type="text"  name="my-input" />
                 </label>
                 <label class="block text-gray-400 text-xs" for="grid-first-name">Landline
-                  <t-input v-model="siteVisitParams.landline"  class="mt-2" maxlength="10" type="tel"  name="my-input" />
+                  <t-input v-model="siteVisitParams.landline"  class="mt-2" minlength="10" type="tel"  name="my-input" />
                 </label>
               </div>
               <label class="block text-main text-sm font-bold mb-3 mt-3" for="grid-first-name">
@@ -141,7 +141,7 @@
                   <t-input v-model="siteVisitParams.referal_name"  class="mt-2" type="text"  name="my-input" />
                 </label>
                 <label class="block text-gray-400 text-xs" for="grid-first-name">Referal Mobile No
-                  <t-input v-model="siteVisitParams.referal_mobile"  class="mt-2" maxlength="10" type="tel"  name="my-input" />
+                  <t-input v-model="siteVisitParams.referal_mobile"  class="mt-2" minlength="10" type="tel"  name="my-input" />
                 </label>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_ChannelPartner">
@@ -172,7 +172,7 @@
                     <t-input v-model="siteVisitParams.friend_name_1"  class="mt-2" type="text"  name="my-input" />
                   </label>
                   <label class="block text-gray-400 text-xs" for="grid-first-name">1st Friend phone No
-                    <t-input v-model="siteVisitParams.friend_contact_1"  class="mt-2" maxlength="10" type="tel"  name="my-input" />
+                    <t-input v-model="siteVisitParams.friend_contact_1"  class="mt-2" minlength="10" type="tel"  name="my-input" />
                   </label>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
@@ -180,7 +180,7 @@
                     <t-input v-model="siteVisitParams.friend_name_2"  class="mt-2" type="text"  name="my-input" />
                   </label>
                   <label class="block text-gray-400 text-xs" for="grid-first-name">2st Friend phone No
-                    <t-input v-model="siteVisitParams.friend_contact_2"  class="mt-2" maxlength="10" type="tel"  name="my-input" />
+                    <t-input v-model="siteVisitParams.friend_contact_2"  class="mt-2" minlength="10" type="tel"  name="my-input" />
                   </label>
                 </div>
                 <button id="btn_clr" type="submit" class="bg-black text-white py-2 px-8 mt-10 border rounded text-base font-medium">
@@ -206,7 +206,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                   <label class="block text-gray-400 text-sm" for="grid-first-name">Mobile *
-                    <t-input v-model="brokerParams.mobile" required  maxlength="10" type="tel" class="mt-2" name="my-input" />
+                    <t-input v-model="brokerParams.mobile" required  minlength="10" type="tel" class="mt-2" name="my-input" />
                   </label>
                   <label class="block text-gray-400 text-sm" for="grid-first-name">Rera Number
                     <t-input v-model="brokerParams.rera_number" class="mt-2" type="text" name="my-input" />
