@@ -176,11 +176,11 @@
                   </label>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                  <label class="block text-gray-400 text-xs " for="grid-first-name">2st Friend Name
+                  <label class="block text-gray-400 text-xs " for="grid-first-name">2nd Friend Name
                     <t-input v-model="siteVisitParams.friend_name_2"  class="mt-2" type="text"  name="my-input" />
                   </label>
-                  <label class="block text-gray-400 text-xs" for="grid-first-name">2st Friend phone No
-                    <t-input v-model="siteVisitParams.friend_contact_2"  class="mt-2" minlength="10" type="tel"  name="my-input" />
+                  <label class="block text-gray-400 text-xs" for="grid-first-name">2nd Friend phone No
+                    <t-input v-model="siteVisitParams.friend_contact_2"  class="mt-2"  minlength="10" maxlength="10" type="tel"  name="my-input" />
                   </label>
                 </div>
                 <button id="btn_clr" type="submit" class="bg-black text-white py-2 px-8 mt-10 border rounded text-base font-medium">
