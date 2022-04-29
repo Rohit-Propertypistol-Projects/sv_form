@@ -28,6 +28,8 @@ export function decodeSiteVisitParams(siteParams){
   senddata['current_residence'] = siteParams.current_residence
   senddata['current_owner'] = siteParams.current_owner
   senddata['broker_id'] = siteParams.broker_id
+  senddata['referal_name'] = siteParams.referal_name
+  senddata['referal_mobile'] = siteParams.referal_mobile
   senddata['friend_name_1'] = siteParams.friend_name_1
   senddata['friend_name_2'] = siteParams.friend_name_2
   senddata['friend_contact_1'] = siteParams.friend_contact_1
