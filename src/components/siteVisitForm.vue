@@ -3,8 +3,8 @@
     <t-card class="bg" v-if="!showPage">
       <form @submit.prevent="showPage = true">
         <div class="form-header-logo page_margin px-16 pt-20 pb-16">
-          <div class="Heading">Welcome to Ekdanta</div>
-          <img class="mx-auto mb-8" src="@/assets/logo-sq.png">
+          <div class="Heading">Welcome to CRM Dummy Builder</div>
+          <img class="mx-auto mb-8" width="200px" src="@/assets/logo_square.png">
             <div class="mx-auto mb-8 w-72">
               <label class="block text-gray-400 text-xs" for="grid-first-name">Project *
                 <t-select v-model="siteVisitParams.project_id" required  placeholder="Select Project" :options="siteData.projects" class="mt-2" />
@@ -20,169 +20,116 @@
     </t-card>
     <t-card class="bg" v-if="showPage">
       <div class="form-header page_margin px-16 pt-10 pb-16">
-         <img class="mx-auto mb-8" src="@/assets/logo-sq.png">
+         <img class="mx-auto mb-8" width="200px" src="@/assets/logo_square.png">
         <p class="font-bold text-lg mb-2" id="form-header-text">Walkin / Site Visit Information Form</p>
       </div>
         <div class="form-body page_margin bottom_margin px-16">
           <t-card class="rounded-0 bg-none" style="background: transparent; box-shadow: none;">
             <form @submit.prevent="submitFn()">
-              <div class="bg-white -mt-14 p-5 rounded-lg shadow-sm">
-              <label class="block text-main text-sm font-bold mb-3" for="grid-first-name">
-              There is a lot in a name, Could we please know yours?
+                <div class="bg-white -mt-14 p-5 rounded-lg shadow-sm">
+              <label class="block tracking-wide text-red-500 text-sm font-medium mb-2" id="header-text-colored" for="grid-first-name">
+              Personal details
               </label>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label class="block text-gray-400 text-opacity-50 text-xs mb-3" for="grid-first-name">Full Name *
+                <label class="block text-gray-400 text-opacity-50 text-xs" for="grid-first-name">Full Name *
                   <t-input v-model="siteVisitParams.name" required  class="mt-2" name="my-input" />
                 </label>
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Mobile *
-                  <t-input v-model="siteVisitParams.mobile" required class="mt-2" minlength="10" type="tel"  name="my-input" />
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Email Address
+                  <t-input v-model="siteVisitParams.email" class="mt-2" type="email"  name="my-input" />
                 </label>
               </div>
-              <label class="block text-main text-sm font-bold mb-3" for="grid-first-name">
-                We will Look Forward to your birthday every year.
-              </label>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <label class="block text-gray-400 text-opacity-50 text-xs" for="grid-first-name">Date of Birth
-                    <datetime type="date" v-model="siteVisitParams.dob" placeholder="Date of Birth" class="mt-2 text-gray-800">
-                    </datetime>
-                  </label>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                <label class="block text-gray-400 text-xs " for="grid-first-name">Mobile Number *
+                  <t-input v-model="siteVisitParams.mobile" type="tel" minlength="10" required class="mt-2"  name="my-input" />
+                </label>
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Alternate Number
+                  <t-input v-model="siteVisitParams.other_phones" type="tel"  minlength="10" class="mt-2" name="my-input" />
+                </label>
               </div>
-              <label class="block text-main text-sm font-bold mb-3 mt-3" for="grid-first-name">
-                We would love to be in touch with you.
-              </label>
-              <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
                 <label class="block text-gray-400 text-xs" for="grid-first-name">Address *
-                  <t-input v-model="siteVisitParams.address1" required class="mt-2" name="my-textarea" />
+                  <t-textarea v-model="siteVisitParams.address" required class="mt-2" name="my-textarea" />
                 </label>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                <label class="block text-gray-400 text-xs" for="grid-first-name">City *
-                  <t-select v-model="siteVisitParams.city_id"  class="mt-2" required placeholder="Select City" :options="siteData.cities" />
-                </label>
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Locality
-                  <t-select v-model="siteVisitParams.locality_id"  class="mt-2" placeholder="Select Locality" :options="localities" />
-                </label>
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-5">
+                <label class="block text-main text-sm font-bold" for="grid-first-name">How you come to know about your project ? </label>
+                 <t-select v-model="siteVisitParams.source_id" required  class="mt-2" placeholder="Select Source" :options="siteData.sources" />
+                <!-- <multiselect v-model="siteVisitParams.source_ids" required :searchable="true"  placeholder="Select Sources" label="text" track-by="id" :options="siteData.sources" :multiple="true" :taggable="true"></multiselect> -->
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-2">
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Pincode
-                  <t-input v-model="siteVisitParams.pincode"  class="mt-2" type="text"  name="my-input" />
-                </label>
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Landline
-                  <t-input v-model="siteVisitParams.landline"  class="mt-2" minlength="10" type="tel"  name="my-input" />
-                </label>
-              </div>
-              <label class="block text-main text-sm font-bold mb-3 mt-3" for="grid-first-name">
-               The League of extraordinary ladies and gentlemen.
-              </label>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-              <label class="block text-gray-400 text-xs " for="grid-first-name">Occupation
-                <t-input v-model="siteVisitParams.occupation"  class="mt-2" type="text"  name="my-input" />
-              </label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Organization Name
-                <t-input v-model="siteVisitParams.organization"  class="mt-2" type="text"  name="my-input" />
-              </label>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-              <label class="block text-gray-400 text-xs " for="grid-first-name">Office Location
-                <t-input v-model="siteVisitParams.office_location"  class="mt-2" type="text"  name="my-input" />
-              </label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Designation
-                <t-input v-model="siteVisitParams.designation"  class="mt-2" type="text"  name="my-input" />
-              </label>
-            </div>
-              <label class="block text-main text-sm font-bold mb-3 mt-3" for="grid-first-name">
-               The Cars you drive.
-              </label>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-              <label class="block text-gray-400 text-xs " for="grid-first-name">Cars Make
-                <t-input v-model="siteVisitParams.car_make"  class="mt-2" type="text"  name="my-input" />
-              </label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Cars Model
-                <t-input v-model="siteVisitParams.car_model"  class="mt-2" type="text"  name="my-input" />
-              </label>
-            </div>
-            <label class="block text-main text-sm font-bold mb-3 mt-3" for="grid-first-name">
-               Allow us to aid you in choosing your dream Residence
-            </label>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Budget *
-              <t-select v-model="siteVisitParams.budget_range" required class="mt-2" placeholder="Select Budget"
-              :options="['Below 70 Lakh', '70-80 Lakh', '80-90 Lakh', '90-1 Cr', '1-1.2 Cr', '1.2-1.4 Cr', '1.4-1.5 Cr', 'Above 1.5 Cr']" /></label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Configuration *
-                <t-select v-model="siteVisitParams.configuration" required class="mt-2" placeholder="Select Configuration" :options="['1 BHK', '2 BHK', '3 BHK']" /></label>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-              <label class="block text-gray-400 text-xs " for="grid-first-name">Purpose of purchase *
-                <t-select v-model="siteVisitParams.purpose" class="mt-2" required placeholder="Select purchase" :options="['Personal Use', 'Investment']" />
-              </label>
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Current Residence type *
-                <t-select v-model="siteVisitParams.current_residence" required class="mt-2" placeholder="Select Current Residence type" :options="['1 BHK', '2 BHK']" />
-              </label>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-2">
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Current Residence Ownership *
-                <t-select v-model="siteVisitParams.current_owner" required class="mt-2" placeholder="Select Current Residence Ownership" :options="['Owner', 'Rental']" />
-              </label>
-            </div>
-            <label class="block text-main text-sm font-bold mb-3 mt-3" for="grid-first-name">
-               It is a privilege to have you here. How did you hear of us?
-            </label>
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-2">
-              <t-select v-model="siteVisitParams.source_id" required  class="mt-2" placeholder="Select Source" :options="siteData.sources" />
-              <!-- <multiselect v-model="siteVisitParams.source_ids" required :searchable="true"  placeholder="Select Sources" label="text" track-by="id" :options="siteData.sources" :multiple="true" :taggable="true"></multiselect> -->
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-2" v-if="is_digital_sub_souces">
-              <label class="block text-gray-400 text-xs" for="grid-first-name">Sub Source *
-                <t-select v-model="siteVisitParams.enquiry_sub_source_id" required  class="mt-2" placeholder="Select Sub Source" :options="siteData.digital_sub_souces" />
-              </label>
-            </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_referal">
-                <label class="block text-gray-400 text-xs " for="grid-first-name">Referrer Name
-                  <t-input v-model="siteVisitParams.referal_name"  class="mt-2" type="text"  name="my-input" />
-                </label>
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Referrer Mobile No
-                  <t-input v-model="siteVisitParams.referal_mobile"  class="mt-2" minlength="10" type="tel"  name="my-input" />
-                </label>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_ChannelPartner">
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Channel Partner *
-                  <t-select v-model="siteVisitParams.broker_id" required  @input="getCPDetails(siteVisitParams.broker_id)" class="mt-2" placeholder="Select Channel Partner" :options="siteData.brokers" />
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4  mt-5" v-if="is_ChannelPartner">
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Channel Partner
+                   <t-select v-model="siteVisitParams.broker_id" required  class="mt-2" placeholder="Select Channel Partner" :options="siteData.brokers" />
                 </label>
                 <button class="astext" type="button" @click="brokerModal = true">+ Add New Channel Partner</button>
-
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_ChannelPartner">
-                <label class="block text-gray-400 text-xs " for="grid-first-name">Channel Partner Company Name
-                  <t-input v-model="siteVisitParams.firm_name"  id="firm_name" disabled class="mt-2" type="text"  name="my-input" />
-                </label>
-                <label class="block text-gray-400 text-xs " for="grid-first-name">RERA ID
-                  <t-input v-model="siteVisitParams.rera_no" id="rera_no" disabled class="mt-2" type="text"  name="my-input" />
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-4">
+                <label class="block text-gray-400 text-xs" for="grid-first-name">Sub Source
+                  <t-input v-model="siteVisitParams.sub_source" class="mt-2" type="text" name="my-input" />
                 </label>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2" v-if="is_ChannelPartner">
-                <label class="block text-gray-400 text-xs" for="grid-first-name">Mobile No
-                  <t-input v-model="siteVisitParams.mobile_no"  id="mobile_no" disabled class="mt-2" type="text"  name="my-input" />
-                </label>
-              </div>
-              <label class="block text-main text-sm font-bold mb-3 mt-3" for="grid-first-name">
-                Would you want any of your friends to enjoy the Ekdanta Experience?
-              </label>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                  <label class="block text-gray-400 text-xs " for="grid-first-name">1st Friend Name
-                    <t-input v-model="siteVisitParams.friend_name_1"  class="mt-2" type="text"  name="my-input" />
-                  </label>
-                  <label class="block text-gray-400 text-xs" for="grid-first-name">1st Friend phone No
-                    <t-input v-model="siteVisitParams.friend_contact_1"  class="mt-2" minlength="10" type="tel"  name="my-input" />
-                  </label>
+                <label class="block text-main text-sm font-bold mt-5" for="grid-first-name">Requirements </label>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 border-b-2 border-grey-400 border-dashed pb-10 mb-5">
+                   <div>
+                      <label class="block text-gray-400 text-xs mb-2" for="grid-first-name">Configuration</label>
+                      <t-select v-model="siteVisitParams.configuration" placeholder="Select Residential" :options="['1 RK', 'Studio', '1 BHK', '2 BHK', '3 BHK', '3.5 BHK', '4 BHK', '5 BHK', 'Shop', 'Office']" />
+                   </div>
+                <div>
+                  <label class="block text-gray-400 text-xs" for="grid-first-name">Budget *</label>
+                  <!-- <t-input v-model="siteVisitParams.budget"  class="mt-2" required type="number" name="my-input" /> -->
+                  <t-select v-model="siteVisitParams.client_budget" class="mt-2" required placeholder="Select Budget" :options="['10 Lakh to 20 Lakh', '20 Lakh to 30 Lakh', 
+                  '30 Lakh to 40 Lakh', '40 Lakh to 50 Lakh', '50 Lakh to 60 Lakh', '60 Lakh to 70 Lakh', '70 Lakh to 80 Lakh', '80 Lakh to 90 Lakh', '90 Lakh to 1 Cr', '1 Cr to 1.25 Cr',
+                  '1.25 Cr - 1.5 Cr', '1.5 Cr to 1.75 Cr', '1.75 Cr to 2 Cr', '2 Cr to 2.25 Cr', '2.25 Cr to 2.5 Cr', '2.5 Cr & Above']" />
+                  </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                  <label class="block text-gray-400 text-xs " for="grid-first-name">2nd Friend Name
-                    <t-input v-model="siteVisitParams.friend_name_2"  class="mt-2" type="text"  name="my-input" />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                  <label class="block text-gray-400 text-xs" for="grid-first-name">Assigned To *
+                    <t-select v-model="siteVisitParams.closing_executive" required  class="mt-2" placeholder="Select Assigned To" :options="siteData.closing_executives" />
                   </label>
-                  <label class="block text-gray-400 text-xs" for="grid-first-name">2nd Friend phone No
-                    <t-input v-model="siteVisitParams.friend_contact_2"  class="mt-2"  minlength="10" maxlength="10" type="tel"  name="my-input" />
-                  </label>
+                  <div id="app" class="web-camera-container">
+                      <div class="camera-button ">
+                        <button type="button" class="button is-rounded flex items-center justify-center" :class="{ 'is-primary' : !isCameraOpen, 'is-danger' : isCameraOpen}" @click="toggleCamera">
+                           <img src="@/assets/photo-camera.svg" class="opacity-80 mr-2 w-8" >
+                          <span v-if="!isCameraOpen">Open Camera</span>
+                          <span v-else>Close Camera</span>
+                      </button>
+                    </div>
+                      <div v-if="isCameraOpen"  class="camera-box" :class="{ 'flash' : isShotPhoto }">
+                        
+                        <div class="camera-shutter" :class="{'flash' : isShotPhoto}"></div>
+                          
+                        <video v-show="!isPhotoTaken" ref="camera" :width="450" :height="337.5" class="my-4" autoplay></video>
+                        
+                        <canvas v-show="isPhotoTaken" id="photoTaken" ref="canvas" :width="450" class="my-4" :height="337.5"></canvas>
+                      </div>
+                      <div class="flex w-full  justify-center relative ">
+                        <div v-if="isCameraOpen" class="camera-shoot mx-auto border border-gray-300 bg-gray-100 p-2 w-14 h-14 rounded-full">
+                            <button type="button" class="button" @click="takePhoto">
+                              <img src="@/assets/capture.svg" class="opacity-80">
+                            </button>
+                          </div>
+                          <div  v-if="isCameraOpen" class="camera-shoot absolute right-0 camera-shoot mx-auto border border-gray-300 bg-gray-100 p-2 w-12 h-12 rounded-full">
+                            <button type="button" class="button" @click="switchCamera">
+                              <img src="@/assets/flip-camera.svg" class="opacity-80">
+                            </button>
+                          </div>
+                      </div>
+                    </div>
                 </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="relative">
+                    <label for="" class="text-main text-gray-400 block mb-2">Add Photo</label>
+                    <label for="upload"
+                      class="text-center rounded-md border border-inputBorder bg-grey  h-24  flex flex-col items-center justify-center">
+                       <input type="file" ref="file" id="upload" class="hidden" @change="selectedFile">
+                       <img src="@/assets/upload-icon.svg" alt="">
+                      <span class="text-main text-opacity-50 text-sm font-medium block mt-1">{{  photo_attributes ? photo_attributes: '' }}</span>
+                     </label>
+                    <p class="text-main text-opacity-50 text-sm font-medium block mt-1 text-center">Image files type accept .jpg .png</p>
+                  </div>
+                  <label class="block text-gray-400 text-xs" for="grid-first-name">Comment
+                    <t-textarea v-model="siteVisitParams.comment" class="mt-2 h-24" name="my-textarea" />
+                  </label>
+                  </div>
                 <button id="btn_clr" type="submit" class="bg-black text-white py-2 px-8 mt-10 border rounded text-base font-medium">
                   Submit
                 </button>
@@ -236,13 +183,8 @@
 
 <script>
 /*eslint-disable */
-import { Datetime } from 'vue-datetime';
 import {companyId} from '@/assets/scripts/utility.js';
 export default {
-  components: {
-    // Multiselect,
-    datetime: Datetime,
-  },
   props: {
     siteVisitParams: {
       type: Object,
@@ -256,9 +198,26 @@ export default {
       type: Function,
       required: true
     },
+    selectedFile: {
+      type: Function,
+    },
+    photo_attributes: {
+      type: String
+    }
   },
   data() {
     return {
+      options: {
+        penColor: "black",
+      },
+      isCameraOpen: false,
+      isPhotoTaken: false,
+      isShotPhoto: false,
+      photos: [],
+      videoDevices: [],
+      mediaStream: null,
+      facingMode: "environment",
+      switchingCamera: false,
       showPage: false,
       brokerModal: false,
       brokerParams: {
@@ -271,21 +230,12 @@ export default {
       }
     }
   },
-  methods: {
-    getCPDetails(id) {
-      this.$parent.isLoading = true
-      this.$axios.get(`mobile_crm/companies/${companyId}/broker?broker_id=${id}`).then((response) => {
-        this.$parent.isLoading = false
-        document.getElementById("firm_name").value = response.data.firm_name
-        document.getElementById("rera_no").value = response.data.rera_no
-        document.getElementById("mobile_no").value = response.data.mobile_no
-        this.siteVisitParams.firm_name = response.data.firm_name
-        this.siteVisitParams.rera_no = response.data.rera_no
-        this.siteVisitParams.mobile_no = response.data.mobile_no
-      }).catch(err => {
-        this.$parent.isLoading = false
-      })
+  computed: {
+    is_ChannelPartner() {
+      return this.siteData.cp_sources_ids.includes(parseInt(this.siteVisitParams.source_id))
     },
+  },
+  methods: {
     addBroker() {
       this.$parent.isLoading = true
       this.$axios.post(`mobile_crm/companies/${companyId}/brokers`, {broker: this.brokerParams})
@@ -298,9 +248,6 @@ export default {
           this.brokerParams = {},
           this.brokerModal = false,
           this.siteVisitParams.broker_id = res.data.broker.id,
-          this.siteVisitParams.firm_name = res.data.broker.firm_name,
-          this.siteVisitParams.rera_no = res.data.broker.rera_number,
-          this.siteVisitParams.mobile_no = res.data.broker.mobile
         )
       })
       .catch(err => {
@@ -320,25 +267,83 @@ export default {
         }
       })
     },
-  },
-  computed: {
-    is_ChannelPartner() {
-      return this.siteData.cp_sources_ids.includes(parseInt(this.siteVisitParams.source_id))
+    async switchCamera() {
+      this.switchingCamera = true;
+      const tracks = this.mediaStream.getVideoTracks();
+      tracks.forEach((track) => {
+        track.stop();
+      });
+      await this.createCameraElement(
+        this.facingMode === "environment" ? "user" : "environment"
+      );
+      this.switchingCamera = false;
     },
-    is_digital_sub_souces() {
-      return this.siteData.digital_sources_ids.includes(parseInt(this.siteVisitParams.source_id))
-    },
-    is_referal() {
-      return this.siteData.reference_source_ids.includes(parseInt(this.siteVisitParams.source_id))
-    },
-    localities() {
-      if (this.siteVisitParams.city_id) {
-         return this.siteData.localities.filter(l => l.city_id == this.siteVisitParams.city_id)
+    async toggleCamera() {
+      if(this.isCameraOpen) {
+        this.isCameraOpen = false;
+        this.isPhotoTaken = false;
+        this.isShotPhoto = false;
+        this.stopCameraStream();
       } else {
-        return []
+        this.isCameraOpen = true;
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        this.videoDevices = devices.filter((d) => d.kind === "videoinput");
+        await this.createCameraElement(
+          this.videoDevices.length === 1 ? "user" : "environment"
+        );
       }
-    }
+    },
+    async createCameraElement(facingMode) {
+      this.facingMode = facingMode;
+      let video = this.$refs.camera;
+      this.mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: facingMode },
+      });
+      video.srcObject = this.mediaStream;
+      return await video.play();
+    },
+    stopCameraStream() {
+      let tracks = this.$refs.camera.srcObject.getTracks();
+      tracks.forEach(track => {
+        track.stop();
+      });
+    },
+    takePhoto() {
+      if(!this.isPhotoTaken) {
+        this.isShotPhoto = true;
+        const FLASH_TIMEOUT = 50;
+        setTimeout(() => {
+          this.isShotPhoto = false;
+        }, FLASH_TIMEOUT);
+      }
+      this.isPhotoTaken = !this.isPhotoTaken;
+      const context = this.$refs.canvas.getContext('2d');
+      context.drawImage(this.$refs.camera, 0, 0, 450, 337.5);
+      this.siteVisitParams.image = document.getElementById("photoTaken").toDataURL("image/jpeg")
+    },
   }
 }
 </script>
+<style scoped>
+body {
+  display: flex;
+  justify-content: center;
+}
 
+.web-camera-container {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dfdfe8;
+  border-radius: 4px;
+  width: 100%;
+}
+  
+#photoTaken {
+  width: 100%;
+}
+</style>

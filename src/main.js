@@ -14,9 +14,9 @@ Vue.use(VueSwal);
 Vue.use(Datetime)
 Vue.use(VueTailwind);
 
-let baseUrl="http://ekdantadevelopers.glitz.apps.enrichr.co/api/";
+let baseUrl="https://crm.dummy-builder.in/api/";
 if(process.env.NODE_ENV === 'production'){
-  baseUrl = "http://ekdantadevelopers.glitz.apps.enrichr.co/api/";
+  baseUrl = "https://crm.dummy-builder.in/api/";
 }
 axios.defaults.baseURL = baseUrl;
 axios.defaults.headers = {
