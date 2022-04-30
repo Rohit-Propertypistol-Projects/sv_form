@@ -1,4 +1,4 @@
-# Ekdanta-glitz-sv
+# CRM-glitz-sv
 
 ## Project setup
 ```
