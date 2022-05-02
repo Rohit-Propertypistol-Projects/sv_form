@@ -7,12 +7,12 @@ module.exports = {
       exclude: ['service-worker.js']
     },
     manifestOptions: {
-      description: 'Ekdanta',
+      description: 'crm',
       lang: 'en-IN',
       orientation: 'portrait-primary',
       background_color: "#fff",
-      name: 'Ekdanta',
-      short_name: 'Ekdanta',
+      name: 'crm',
+      short_name: 'crm',
       display: 'standalone',
       start_url: '.',
       theme_color: '#F07B00',

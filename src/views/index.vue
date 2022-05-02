@@ -3,7 +3,7 @@
     <div class="loader-wrapper"  v-show="this.isLoading">
       <div class="loader">Loading...</div>
     </div>
-    <siteVisitForm v-if="Object.keys(this.siteData).length > 0" ref="svForm" :siteData="siteData" :siteVisitParams="siteVisitParams" :submitFn="addSiteVisitData"/>
+    <siteVisitForm v-if="Object.keys(this.siteData).length > 0" ref="svForm" :photo_attributes="photo_attributes" :siteData="siteData" :selectedFile="selectedFile" :siteVisitParams="siteVisitParams" :submitFn="addSiteVisitData"/>
   </div>
 </template>
 
@@ -18,6 +18,7 @@ export default {
   },
   data () {
     return {
+      photo_attributes: '',
       isLoading: false,
       siteData: {},
       siteVisitParams: {}
@@ -27,6 +28,22 @@ export default {
     this.fetchSite()
   },
   methods: {
+    selectedFile() {
+      let photo = event.target.files[0];
+      this.photo_attributes = photo.name
+      this.getBase64(photo).then(
+      data =>  {
+        this.siteVisitParams.image = data
+      });
+    },
+    getBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+    },
     fetchSite() {
       this.isLoading = true
       this.$axios.get(`mobile_crm/companies/${companyId}/settings`).then((response) => {
@@ -49,6 +66,8 @@ export default {
             this.fetchSite(),
             this.siteVisitParams = {},
             this.$refs.svForm.showPage = false,
+            this.$refs.svForm.isCameraOpen = false,
+            this.photo_attributes = null
           );
         })
         .catch(err => {
