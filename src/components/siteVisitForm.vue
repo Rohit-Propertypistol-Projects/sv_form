@@ -130,6 +130,21 @@
                     <t-textarea v-model="siteVisitParams.comment" class="mt-2 h-24" name="my-textarea" />
                   </label>
                   </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                  <label class="block text-gray-400 text-xs font-normal" for="grid-first-name">Sign in the given box
+                    <div class="container mt-2">
+                      <VueSignaturePad
+                        id="signature"
+                        height="140px"
+                        ref="signaturePad"
+                        :options="options"
+                      />
+                    <div class="buttons">
+                      <button type="button" @click="clearSignature">Clear</button>
+                    </div>
+                  </div>
+                </label>
+              </div>
                 <button id="btn_clr" type="submit" class="bg-black text-white py-2 px-8 mt-10 border rounded text-base font-medium">
                   Submit
                 </button>
@@ -236,6 +251,10 @@ export default {
     },
   },
   methods: {
+    clearSignature() {
+      this.$refs.signaturePad.clearSignature();
+      this.siteVisitParams.signature = null
+    },
     addBroker() {
       this.$parent.isLoading = true
       this.$axios.post(`mobile_crm/companies/${companyId}/brokers`, {broker: this.brokerParams})

@@ -8,10 +8,12 @@ import VueSwal from 'vue-swal';
 import './registerServiceWorker'
 import { Datetime } from 'vue-datetime';
 import 'vue-datetime/dist/vue-datetime.css'
+import VueSignaturePad from 'vue-signature-pad';
 
 
 Vue.use(VueSwal);
 Vue.use(Datetime)
+Vue.use(VueSignaturePad);
 Vue.use(VueTailwind);
 
 let baseUrl="https://crm.dummy-builder.in/api/";
