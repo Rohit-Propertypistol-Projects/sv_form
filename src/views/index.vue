@@ -54,6 +54,10 @@ export default {
       })
     },
     addSiteVisitData(){
+    let { isEmpty, data } = this.$refs.svForm.$refs.signaturePad.saveSignature()
+      if (!isEmpty) {
+        this.siteVisitParams.signature = data
+      }
       let apiParams = decodeSiteVisitParams(this.siteVisitParams)
       this.isLoading = true
       this.$axios.post(`mobile_crm/companies/${companyId}/leads`, {lead: apiParams})

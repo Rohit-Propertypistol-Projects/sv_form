@@ -13,6 +13,7 @@ export function decodeSiteVisitParams(siteParams){
     // senddata['source_ids'] = siteParams.source_ids.map(i => i.id.toString())
     senddata['source_id'] = siteParams.source_id
   }
+  senddata['signature'] = siteParams.signature
   senddata['sub_source'] = siteParams.sub_source
   senddata['project_id'] = siteParams.project_id
   senddata['configuration'] = siteParams.configuration
