@@ -23,5 +23,18 @@ export function decodeSiteVisitParams(siteParams){
   return senddata;
 }
 
-export const token = process.env.NODE_ENV === 'production' ? 'b807d5eb37392ffe' : 'b807d5eb37392ffe'
-export const companyId = process.env.NODE_ENV === 'production' ? '3aca59b7-0f5e-4011-8751-b9d40dcc5afa' : '3aca59b7-0f5e-4011-8751-b9d40dcc5afa'
+
+export let token = '';
+export let companyId = '';
+if (process.env.NODE_ENV === 'production') {
+  if (window.location.host === 'crm-sv.dummy-builder.in') {
+    token = 'b807d5eb37392ffe'
+    companyId = '3aca59b7-0f5e-4011-8751-b9d40dcc5afa'
+  } else {
+    token = '86e6a0c5a13121e9'
+    companyId = '8ae9913c-ecec-4a4e-89ac-1cfb467c6b1d'
+  }
+} else {
+  token = 'b807d5eb37392ffe'
+  companyId = '3aca59b7-0f5e-4011-8751-b9d40dcc5afa'
+}
